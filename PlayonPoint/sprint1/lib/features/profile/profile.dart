@@ -1,7 +1,6 @@
 // profile.dart
-import 'package:map_mvvm/view/view.dart';
+
 import 'package:flutter/material.dart';
-import 'package:sprint1/features/profile/profile_viewmodel.dart';
 import 'package:sprint1/models/user.dart';
 import '../setting/setting.dart';
 
@@ -74,8 +73,7 @@ class _ProfileState extends State<Profile> {
       body: Container(
         width: double.infinity,
         height: double.infinity,
-        decoration: BoxDecoration(
-            // Removed the image decoration for simplicity
+        decoration: const BoxDecoration(
             ),
         child: SingleChildScrollView(
           child: Center(

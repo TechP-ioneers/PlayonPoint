@@ -2,14 +2,11 @@ import 'package:map_mvvm/view/viewmodel.dart';
 import '../../services/user/user_service.dart';
 import '../../models/user.dart';
 import '../../configs/service_locator.dart';
-// Assuming your Setting widget is in settingview.dart
 
 class ProfileViewModel extends Viewmodel {
   late User _user;
 
   final UserService _userService = locator();
-
-  // List<User> get users => _users;
 
   ProfileViewModel({required User passUser}) {
     _user = passUser;

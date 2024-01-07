@@ -1,8 +1,9 @@
 // setting_view_model.dart
 import 'package:flutter/material.dart';
+import 'package:map_mvvm/view/viewmodel.dart';
 import 'package:sprint1/models/user.dart';
 
-class SettingViewModel extends ChangeNotifier {
+class SettingViewModel extends Viewmodel {
   
   late User _user;
   TextEditingController emailController = TextEditingController();

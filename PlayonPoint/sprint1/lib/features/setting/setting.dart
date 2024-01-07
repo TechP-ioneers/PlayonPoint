@@ -46,7 +46,7 @@ class _SettingState extends State<Setting> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xFFb364f3),
+      backgroundColor: const Color(0xFFb364f3),
       appBar: AppBar(
         backgroundColor: Colors.lightGreenAccent,
         title: const Text('Settings'),
@@ -54,7 +54,7 @@ class _SettingState extends State<Setting> {
       body: Container(
         width: double.infinity,
         height: double.infinity,
-        decoration: BoxDecoration(
+        decoration: const BoxDecoration(
           // Removed the image decoration for simplicity
         ),
         child: SingleChildScrollView(
@@ -151,7 +151,7 @@ class _SettingState extends State<Setting> {
               controller: controller,
               decoration: InputDecoration(
                 labelText: label,
-                border: OutlineInputBorder(),
+                border: const OutlineInputBorder(),
                 prefixIcon: Icon(icon),
               ),
             ),
@@ -182,7 +182,7 @@ class _SettingState extends State<Setting> {
                         child: Text(gender),
                       ))
                   .toList(),
-              decoration: InputDecoration(
+              decoration: const InputDecoration(
                 labelText: 'Gender',
                 border: OutlineInputBorder(),
                 prefixIcon: Icon(Icons.person),
