@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:sprint1/models/user.dart';
 import 'home/home.dart';
-import '../services/user/user_service.dart';
-import '../services/user/user_service_memory.dart'; 
 import '../configs/service_locator.dart';
 
 void main() {

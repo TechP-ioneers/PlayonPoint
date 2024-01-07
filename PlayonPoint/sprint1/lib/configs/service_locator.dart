@@ -1,4 +1,5 @@
 import 'package:map_mvvm/app/service_locator.dart';
+import 'package:sprint1/features/setting/setting_viewmodel.dart';
 import 'package:sprint1/models/user.dart';
 import '../features/profile/profile_viewmodel.dart';
 import '../features/home/home_viewmodel.dart';
@@ -11,4 +12,5 @@ void initilizeServiceLocator() {
   locator.registerLazySingleton<UserService>(() => UserServiceMemory());
   locator.registerFactory<HomeViewModel>(() => HomeViewModel());
   locator.registerFactory<ProfileViewModel>(() => ProfileViewModel(passUser: User()));
+  locator.registerFactory<SettingViewModel>(() => SettingViewModel(passUser: User()));
 }

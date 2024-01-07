@@ -51,7 +51,6 @@ class _ProfileState extends State<Profile> {
         actions: [
           IconButton(
             onPressed: () async {
-              // Navigate to the Setting page and wait for the result
               final updatedUser = await Navigator.push(
                 context,
                 MaterialPageRoute(
@@ -59,7 +58,6 @@ class _ProfileState extends State<Profile> {
                 ),
               );
 
-              // Update the user data in the profile page
               if (updatedUser != null) {
                 setState(() {
                   passUser = updatedUser;

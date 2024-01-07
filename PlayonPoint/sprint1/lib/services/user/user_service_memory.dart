@@ -1,10 +1,7 @@
 import 'user_service.dart';
 import '../../models/user.dart';
-import 'package:flutter/material.dart';
-
 
 class UserServiceMemory extends UserService {
-  @override
   final List<User> users = [
     User(
       name: 'John Doe', // Replace with actual user data
@@ -37,19 +34,26 @@ Future<User> getUser() async {
     return Future.value(users);
   }
 
-
-  @override
-  Future<User> updateUsers(String id, User updatedUser) async {
-    final index = users.indexWhere((user) => user.getId() == id);
-    users[index] = updatedUser;
-    return users[index];
-  }
   
   
   @override
-  Future<void> updateUser(String id, User data) {
+  Future<User> updateUser(String id, User data) {
     final index = users.indexWhere((user) => user.getId() == id);
     users[index] = data;
-    return Future.value();
+    return Future.value(users[index]);
+  }
+  
+  @override
+  Future<User> addUser(User data) {
+    int index = users.length;
+    users.insert(index, data);
+    return Future.value(users[index]);
+  }
+  
+  @override
+  Future<User> deleteUser(String id) {
+    final index = users.indexWhere((user) => user.getId() == id);
+    users.removeAt(index);
+    return Future.value(users[index]);
   }
 }

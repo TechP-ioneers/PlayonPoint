@@ -39,7 +39,6 @@ class _SettingState extends State<Setting> {
       userId: user.getId(),
     );
 
-    // Send the updated user data back to the profile page
     Navigator.pop(context, updatedUser);
   }
 
@@ -55,7 +54,6 @@ class _SettingState extends State<Setting> {
         width: double.infinity,
         height: double.infinity,
         decoration: const BoxDecoration(
-          // Removed the image decoration for simplicity
         ),
         child: SingleChildScrollView(
           child: Center(
