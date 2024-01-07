@@ -6,7 +6,6 @@ class User {
   String address;
   String gender;
   String userId;
-  Boolean bookingNotification;
   late String profilePictureUrl;
 
   User({
@@ -18,7 +17,6 @@ class User {
     this.userId = " ",
     this.gender = " ",
     this.profilePictureUrl = " ",
-    this.bookingNotification = false,
   });
 
   // Getters

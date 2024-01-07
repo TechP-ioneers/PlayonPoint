@@ -7,15 +7,15 @@ import '../configs/service_locator.dart';
 
 void main() {
   
-  runApp( MyApp(passUser: widget.passUser,));
+  runApp( MyApp());
 
   initilizeServiceLocator();
 }
 
 class MyApp extends StatelessWidget {
 
-  final User passUser;
-  const MyApp({Key? key, required this.passUser}) : super(key: key);
+  
+  const MyApp({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -28,7 +28,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: Home(passUser: widget.passUser),
+      home: Home(passUser: User()),
     );
   }
 }

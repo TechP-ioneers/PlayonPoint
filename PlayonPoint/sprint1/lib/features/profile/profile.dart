@@ -160,7 +160,7 @@ class _ProfileState extends State<Profile> {
                           style: TextStyle(fontSize: 17),
                         ),
                         SizedBox(width: 10),
-                        NotiSwitch(),
+                       
                       ],
                     ),
                   ),
@@ -174,22 +174,4 @@ class _ProfileState extends State<Profile> {
   }
 }
 
-class NotiSwitch extends StatelessWidget {
-  const NotiSwitch({Key? key}) : super(key: key);
 
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-      children: <Widget>[
-        ViewWrapper<ProfileViewModel>(builder: (context, viewmodel) => Switch(
-            value: viewmodel.user.bookingNotification,
-            onChanged: (bool value) {
-              viewmodel.changeBookingNotification()
-            },
-          ),
-        ),
-      ],
-    );
-  }
-}

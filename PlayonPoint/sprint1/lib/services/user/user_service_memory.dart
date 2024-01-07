@@ -27,10 +27,12 @@ class UserServiceMemory extends UserService {
     ),
   ];
 
-  @override
-  Future<List<User>> getUser() async {
-    return users;
-  }
+@override
+Future<User> getUser() async {
+  // Return a single user or modify as per your logic
+  return Future.value(users.isNotEmpty ? users[0] : null);
+}
+
 
   @override
   Future<User> updateUsers(String id, User updatedUser) async {
@@ -38,5 +40,17 @@ class UserServiceMemory extends UserService {
     users[index] = updatedUser;
     return users[index];
     
+  }
+  
+  @override
+  Future<List<User>> getAllUser() {
+    // TODO: implement getAllUser
+    throw UnimplementedError();
+  }
+  
+  @override
+  Future<void> updateUser(String id, User data) {
+    // TODO: implement updateUser
+    throw UnimplementedError();
   }
 }

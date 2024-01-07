@@ -28,10 +28,4 @@ class ProfileViewModel extends Viewmodel {
     _user = await _userService.getUser();
     update();
   }
-
-  changeBookingNotification() {
-    _user.bookingNotification = !_user.bookingNotification;
-    _userService.updateUser(_user.userId, _user);
-    update();
-  }
 }
