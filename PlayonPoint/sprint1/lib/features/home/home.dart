@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:sprint1/features/booking/booking.dart';
+import 'package:sprint1/features/login/login.dart';
 import 'package:sprint1/features/profile/profile.dart';
 import 'package:sprint1/models/user.dart';
 import '../availability/availability.dart';
 
-
-
 class Home extends StatefulWidget {
-  
   final User passUser;
 
   Home({Key? key, required this.passUser}) : super(key: key);
@@ -32,7 +31,6 @@ class _HomeState extends State<Home> {
             DrawerHeader(
               decoration: BoxDecoration(
                 color: Color(0xFFb364f3).withOpacity(0.5),
-                
               ),
               child: Text(
                 'Menu',
@@ -46,6 +44,39 @@ class _HomeState extends State<Home> {
                   context,
                   MaterialPageRoute(
                     builder: (context) => Profile(passUser: widget.passUser),
+                  ),
+                );
+              },
+            ),
+            ListTile(
+              title: Text('Availability'),
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => Availability(),
+                  ),
+                );
+              },
+            ),
+            ListTile(
+              title: Text('Login'),
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => LoginPage(),
+                  ),
+                );
+              },
+            ),
+            ListTile(
+              title: Text('Booking'),
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => BookingPage(),
                   ),
                 );
               },
@@ -129,8 +160,13 @@ class _HomeState extends State<Home> {
                     // Container for Ping Pong
                     GestureDetector(
                       onTap: () {
-                        // Navigate to a new page or perform an action
-                        print('Ping Pong tapped!');
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) =>
+                                const Availability(),
+                          ),
+                        );
                       },
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
@@ -146,7 +182,6 @@ class _HomeState extends State<Home> {
                             child: Column(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
-                                
                                 SizedBox(height: 10),
                                 Text(
                                   'Ping Pong',
@@ -164,8 +199,13 @@ class _HomeState extends State<Home> {
                     // Container for Badminton
                     GestureDetector(
                       onTap: () {
-                        // Navigate to a new page or perform an action
-                        print('Badminton tapped!');
+                         Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) =>
+                                const Availability(),
+                          ),
+                        );
                       },
                       child: Column(
                         children: [
@@ -180,7 +220,6 @@ class _HomeState extends State<Home> {
                             child: Column(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
-                               
                                 SizedBox(height: 10),
                                 Text(
                                   'Badminton',
@@ -198,8 +237,13 @@ class _HomeState extends State<Home> {
                     // Container for Squash
                     GestureDetector(
                       onTap: () {
-                        // Navigate to a new page or perform an action
-                        print('Squash tapped!');
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) =>
+                                const Availability(),
+                          ),
+                        );
                       },
                       child: Column(
                         children: [

@@ -152,17 +152,6 @@ class _ProfileState extends State<Profile> {
                       color: Colors.lightGreenAccent,
                       borderRadius: BorderRadius.all(Radius.circular(10)),
                     ),
-                    child: const Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: [
-                        Text(
-                          'Booking Notification',
-                          style: TextStyle(fontSize: 17),
-                        ),
-                        SizedBox(width: 10),
-                       
-                      ],
-                    ),
                   ),
                 ],
               ),
