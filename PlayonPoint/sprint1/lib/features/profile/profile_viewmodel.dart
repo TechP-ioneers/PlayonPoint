@@ -1,6 +1,6 @@
 import 'package:map_mvvm/view/viewmodel.dart';
 import '../../services/user/user_service.dart';
-import '../../models/user.dart';
+import '../../models/user_model.dart';
 import '../../configs/service_locator.dart';
 
 class ProfileViewModel extends Viewmodel {
@@ -14,15 +14,9 @@ class ProfileViewModel extends Viewmodel {
 
   User get user => _user;
 
-//   Future<void> editUsers(User updatedUser) async {
-//     User updated = await _userService.updateUser(updatedUser);
-//     int index = _users.indexWhere((user) => user.getId() == updated.getId());
-//     _users[index] = updated;
-//     update();
-//   }
-
-  Future<void> getUser(String id) async {
-    _user = await _userService.getUser();
+  Future<void> updateUser(User updatedUser) async {
+    await _userService.updateUser(_user.getId(), updatedUser);
+    _user = updatedUser;
     update();
   }
 }

@@ -2,13 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:sprint1/features/booking/booking.dart';
 import 'package:sprint1/features/login/login.dart';
 import 'package:sprint1/features/profile/profile.dart';
-import 'package:sprint1/models/user.dart';
+import 'package:sprint1/features/profile/profile_viewmodel.dart';
+import 'package:sprint1/models/user_model.dart';
 import '../availability/availability.dart';
 
 class Home extends StatefulWidget {
   final User passUser;
 
-  Home({Key? key, required this.passUser}) : super(key: key);
+  const Home({Key? key, required this.passUser}) : super(key: key);
 
   @override
   _HomeState createState() => _HomeState();
@@ -19,8 +20,8 @@ class _HomeState extends State<Home> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('HomePage'),
-        backgroundColor: Color(0xFFb364f3),
+        title: const Text('HomePage'),
+        backgroundColor: const Color(0xFFb364f3),
         elevation: 0,
       ),
       backgroundColor: Colors.transparent,
@@ -30,37 +31,38 @@ class _HomeState extends State<Home> {
           children: [
             DrawerHeader(
               decoration: BoxDecoration(
-                color: Color(0xFFb364f3).withOpacity(0.5),
+                color: const Color(0xFFb364f3).withOpacity(0.5),
               ),
-              child: Text(
+              child: const Text(
                 'Menu',
                 style: TextStyle(color: Colors.black, fontSize: 30),
               ),
             ),
             ListTile(
-              title: Text('Profile'),
+              title: const Text('Profile'),
               onTap: () {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => Profile(passUser: widget.passUser),
+                    builder: (context) => Profile(passUser: widget.passUser, viewModel: ProfileViewModel(passUser: widget.passUser),
+                  ),
+                )
+                );
+              },
+            ),
+            ListTile(
+              title: const Text('Availability'),
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const Availability(),
                   ),
                 );
               },
             ),
             ListTile(
-              title: Text('Availability'),
-              onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => Availability(),
-                  ),
-                );
-              },
-            ),
-            ListTile(
-              title: Text('Login'),
+              title: const Text('Login'),
               onTap: () {
                 Navigator.push(
                   context,
@@ -71,12 +73,12 @@ class _HomeState extends State<Home> {
               },
             ),
             ListTile(
-              title: Text('Booking'),
+              title: const Text('Booking'),
               onTap: () {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => BookingPage(),
+                    builder: (context) => const BookingPage(),
                   ),
                 );
               },
@@ -85,7 +87,7 @@ class _HomeState extends State<Home> {
         ),
       ),
       body: Container(
-        decoration: BoxDecoration(
+        decoration: const BoxDecoration(
           gradient: LinearGradient(
             begin: Alignment.topLeft,
             end: Alignment.bottomRight,
@@ -95,25 +97,25 @@ class _HomeState extends State<Home> {
         child: Center(
           child: Column(
             children: [
-              SizedBox(height: 10),
+              const SizedBox(height: 10),
               Text(
                 'Welcome, ${widget.passUser.getName()}!',
-                style: TextStyle(
+                style: const TextStyle(
                   fontSize: 30,
                   fontWeight: FontWeight.bold,
                   fontStyle: FontStyle.italic,
                   color: Colors.white,
                 ),
               ),
-              SizedBox(height: 10),
+              const SizedBox(height: 10),
               Container(
                 width: 400,
                 height: 200,
-                decoration: BoxDecoration(
+                decoration: const BoxDecoration(
                   color: Colors.white,
                   borderRadius: BorderRadius.all(Radius.circular(10)),
                 ),
-                child: Padding(
+                child: const Padding(
                   padding: EdgeInsets.all(16.0),
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
@@ -150,9 +152,9 @@ class _HomeState extends State<Home> {
                   ),
                 ),
               ),
-              SizedBox(height: 20),
+              const SizedBox(height: 20),
               // Containers for Ping Pong, Badminton, and Squash
-              Container(
+              SizedBox(
                 width: 400,
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -174,12 +176,12 @@ class _HomeState extends State<Home> {
                           Container(
                             width: 100,
                             height: 120,
-                            decoration: BoxDecoration(
+                            decoration: const BoxDecoration(
                               color: Colors.white,
                               borderRadius:
                                   BorderRadius.all(Radius.circular(10)),
                             ),
-                            child: Column(
+                            child: const Column(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
                                 SizedBox(height: 10),
@@ -212,12 +214,12 @@ class _HomeState extends State<Home> {
                           Container(
                             width: 100,
                             height: 120,
-                            decoration: BoxDecoration(
+                            decoration: const BoxDecoration(
                               color: Colors.white,
                               borderRadius:
                                   BorderRadius.all(Radius.circular(10)),
                             ),
-                            child: Column(
+                            child: const Column(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
                                 SizedBox(height: 10),
@@ -250,12 +252,12 @@ class _HomeState extends State<Home> {
                           Container(
                             width: 100,
                             height: 120,
-                            decoration: BoxDecoration(
+                            decoration: const BoxDecoration(
                               color: Colors.white,
                               borderRadius:
                                   BorderRadius.all(Radius.circular(10)),
                             ),
-                            child: Column(
+                            child: const Column(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
                                 SizedBox(height: 10),
@@ -275,8 +277,8 @@ class _HomeState extends State<Home> {
                   ],
                 ),
               ),
-              SizedBox(height: 20),
-              Container(
+              const SizedBox(height: 20),
+              const SizedBox(
                 width: 600,
                 child: Column(
                   children: [

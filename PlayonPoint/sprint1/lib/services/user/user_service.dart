@@ -1,4 +1,4 @@
-import 'package:sprint1/models/user.dart';
+import 'package:sprint1/models/user_model.dart';
 
 abstract class UserService {
   Future<List<User>> getAllUser();
@@ -6,4 +6,5 @@ abstract class UserService {
   Future<User> addUser(User data);
   Future<User> deleteUser(String id);
   Future<User> updateUser(String id, User data);
+  Future<User> fetchUserData(String email, String password);
 }

@@ -1,7 +1,26 @@
 import 'package:flutter/material.dart';
+import 'package:map_mvvm/view/viewmodel.dart';
+import 'package:sprint1/configs/service_locator.dart';
+import 'package:sprint1/models/user_model.dart';
+import 'package:sprint1/services/user/user_service.dart';
 import '../availability/availability.dart';
 
-class HomeViewModel {
+class HomeViewModel extends Viewmodel {
+  late User _user;
+  
+  final UserService _userService = locator();
+
+  HomeViewModel({required User passUser}) {
+    _user = passUser;
+  }
+
+  User get user => _user;
+
+  Future <void> buildContainer() async {
+    await _userService.getAllUser();
+    update();
+  }
+
   Widget buildNewsContainer() {
     return Center(
       child: Container(
@@ -67,7 +86,7 @@ class HomeViewModel {
       onTap: () {
         Navigator.push(
           context,
-          MaterialPageRoute(builder: (context) => Availability()),
+          MaterialPageRoute(builder: (context) => const Availability()),
         );
       },
       child: Container(
@@ -80,10 +99,10 @@ class HomeViewModel {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            SizedBox(height: 10),
+            const SizedBox(height: 10),
             Text(
               sport,
-              style: TextStyle(
+              style: const TextStyle(
                 fontSize: 18,
                 fontWeight: FontWeight.bold,
               ),

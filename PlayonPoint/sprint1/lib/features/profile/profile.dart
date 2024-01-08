@@ -1,26 +1,12 @@
-// profile.dart
-
 import 'package:flutter/material.dart';
-import 'package:sprint1/models/user.dart';
+import 'package:sprint1/features/profile/profile_viewmodel.dart';
+import 'package:sprint1/models/user_model.dart';
 import '../setting/setting.dart';
 
-class Profile extends StatefulWidget {
-  final User passUser;
+class Profile extends StatelessWidget {
+  final ProfileViewModel viewModel;
 
-  const Profile({Key? key, required this.passUser}) : super(key: key);
-
-  @override
-  State<Profile> createState() => _ProfileState();
-}
-
-class _ProfileState extends State<Profile> {
-  late User passUser;
-
-  @override
-  void initState() {
-    super.initState();
-    passUser = widget.passUser;
-  }
+  const Profile({Key? key, required this.viewModel, required User passUser}) : super(key: key);
 
   Widget buildInfoRow(IconData icon, String text) {
     return Row(
@@ -54,14 +40,12 @@ class _ProfileState extends State<Profile> {
               final updatedUser = await Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (context) => Setting(passUser: passUser),
+                  builder: (context) => Setting(passUser: viewModel.user),
                 ),
               );
 
               if (updatedUser != null) {
-                setState(() {
-                  passUser = updatedUser;
-                });
+                viewModel.updateUser(updatedUser);
               }
             },
             icon: const Icon(Icons.settings),
@@ -71,8 +55,7 @@ class _ProfileState extends State<Profile> {
       body: Container(
         width: double.infinity,
         height: double.infinity,
-        decoration: const BoxDecoration(
-            ),
+        decoration: const BoxDecoration(),
         child: SingleChildScrollView(
           child: Center(
             child: Padding(
@@ -85,12 +68,12 @@ class _ProfileState extends State<Profile> {
                   ),
                   const SizedBox(height: 10),
                   Text(
-                    '${passUser.getName()}',
+                    '${viewModel.user.getName()}',
                     style: const TextStyle(
                         fontWeight: FontWeight.bold, fontSize: 21.5),
                   ),
                   Text(
-                    '${passUser.getId()}',
+                    '${viewModel.user.getId()}',
                     style: const TextStyle(fontSize: 16),
                   ),
                   const SizedBox(height: 10),
@@ -129,13 +112,13 @@ class _ProfileState extends State<Profile> {
                           ),
                         ),
                         const SizedBox(height: 20),
-                        buildInfoRow(Icons.person, passUser.getEmail()),
+                        buildInfoRow(Icons.person, viewModel.user.getEmail()),
                         const SizedBox(height: 20),
-                        buildInfoRow(Icons.phone, passUser.getPhone()),
+                        buildInfoRow(Icons.phone, viewModel.user.getPhone()),
                         const SizedBox(height: 20),
-                        buildInfoRow(Icons.home, passUser.getAddress()),
+                        buildInfoRow(Icons.home, viewModel.user.getAddress()),
                         const SizedBox(height: 20),
-                        buildInfoRow(Icons.work, passUser.getGender()),
+                        buildInfoRow(Icons.work, viewModel.user.getGender()),
                         const SizedBox(height: 20),
                       ],
                     ),
@@ -158,5 +141,3 @@ class _ProfileState extends State<Profile> {
     );
   }
 }
-
-
