@@ -26,7 +26,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: LoginView(viewModel: LoginViewModel()),
+      home: LoginView(viewModel: LoginViewModel(context: context)),
     );
   }
 }

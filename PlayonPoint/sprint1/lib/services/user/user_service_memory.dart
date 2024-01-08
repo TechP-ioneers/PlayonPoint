@@ -56,7 +56,7 @@ class UserServiceMemory extends UserService {
   }
 
   @override
-  Future<User> fetchUserData(String email, String password) async {
+  Future<User> getUserData(String email, String password) async {
     for (var user in users) {
       if (user.getEmail() == email && user.getPassword() == password) {
         return (user);

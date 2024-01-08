@@ -37,13 +37,14 @@ class LoginView extends StatelessWidget {
             const SizedBox(height: 16.0),
             ElevatedButton(
               onPressed: () async {
-                await viewModel.login();
-                // ignore: use_build_context_synchronously
+                User loggedUser = await viewModel.getUserData();
+                await viewModel.login(loggedUser,);
                 Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => Home(passUser: User()),
-                    ));
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => Home(passUser: loggedUser),
+                  ),
+                );
               },
               child: const Text('Login'),
             ),

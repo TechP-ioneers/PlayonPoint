@@ -71,7 +71,7 @@ class _HomeState extends State<Home> {
                   context,
                   MaterialPageRoute(
                     builder: (context) => LoginView(
-                        viewModel: LoginViewModel()),
+                        viewModel: LoginViewModel(context: context)),
                   ),
                 );
               },
