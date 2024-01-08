@@ -7,7 +7,7 @@ class Setting extends StatelessWidget {
   final TextEditingController emailController = TextEditingController();
   final TextEditingController phoneController = TextEditingController();
   final TextEditingController addressController = TextEditingController();
-  String selectedGender = '';
+   String selectedGender = '';
 
   Setting({Key? key, required this.passUser}) : super(key: key) {
     emailController.text = passUser.getEmail();

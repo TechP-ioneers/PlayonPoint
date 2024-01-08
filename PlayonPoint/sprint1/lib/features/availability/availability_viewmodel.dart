@@ -42,14 +42,14 @@ class AvailabilityViewModel {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text(
+            const Text(
               "Time",
               style: TextStyle(
                 fontSize: 20,
                 fontWeight: FontWeight.bold,
               ),
             ),
-            SizedBox(height: 10),
+            const SizedBox(height: 10),
             // Rows of time slots from 8 AM to 9 PM with spacing
             for (int hour = 8; hour < 21; hour += 2)
               Row(
@@ -77,14 +77,14 @@ class AvailabilityViewModel {
       child: Container(
         width: 150,
         height: 30,
-        decoration: BoxDecoration(
+        decoration: const BoxDecoration(
           color: Colors.lightGreenAccent,
           borderRadius: BorderRadius.all(Radius.circular(5)),
         ),
         child: Center(
           child: Text(
             timeSlot,
-            style: TextStyle(
+            style: const TextStyle(
               fontSize: 16,
               fontWeight: FontWeight.bold,
             ),

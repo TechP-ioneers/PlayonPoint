@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:sprint1/features/booking/booking.dart';
 import 'package:sprint1/features/login/login.dart';
+import 'package:sprint1/features/login/login_viewmodel.dart';
 import 'package:sprint1/features/profile/profile.dart';
 import 'package:sprint1/features/profile/profile_viewmodel.dart';
 import 'package:sprint1/models/user_model.dart';
+import 'package:sprint1/services/user/user_service_memory.dart';
 import '../availability/availability.dart';
 
 class Home extends StatefulWidget {
@@ -42,12 +44,13 @@ class _HomeState extends State<Home> {
               title: const Text('Profile'),
               onTap: () {
                 Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => Profile(passUser: widget.passUser, viewModel: ProfileViewModel(passUser: widget.passUser),
-                  ),
-                )
-                );
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => Profile(
+                        passUser: widget.passUser,
+                        viewModel: ProfileViewModel(passUser: widget.passUser),
+                      ),
+                    ));
               },
             ),
             ListTile(
@@ -67,7 +70,8 @@ class _HomeState extends State<Home> {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => LoginPage(),
+                    builder: (context) => LoginView(
+                        viewModel: LoginViewModel()),
                   ),
                 );
               },
@@ -165,8 +169,7 @@ class _HomeState extends State<Home> {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (context) =>
-                                const Availability(),
+                            builder: (context) => const Availability(),
                           ),
                         );
                       },
@@ -201,11 +204,10 @@ class _HomeState extends State<Home> {
                     // Container for Badminton
                     GestureDetector(
                       onTap: () {
-                         Navigator.push(
+                        Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (context) =>
-                                const Availability(),
+                            builder: (context) => const Availability(),
                           ),
                         );
                       },
@@ -242,8 +244,7 @@ class _HomeState extends State<Home> {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (context) =>
-                                const Availability(),
+                            builder: (context) => const Availability(),
                           ),
                         );
                       },

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:sprint1/features/login/login.dart';
+import 'package:sprint1/features/login/login_viewmodel.dart';
 import '../configs/service_locator.dart';
 
 void main() {
@@ -25,7 +26,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: LoginPage(),
+      home: LoginView(viewModel: LoginViewModel()),
     );
   }
 }

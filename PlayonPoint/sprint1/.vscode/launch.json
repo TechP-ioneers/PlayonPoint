@@ -40,6 +40,26 @@
             "request": "launch",
             "type": "dart",
             "flutterMode": "release"
+        },
+        {
+            "name": "map_mvvm",
+            "cwd": "packages\\map_mvvm",
+            "request": "launch",
+            "type": "dart"
+        },
+        {
+            "name": "map_mvvm (profile mode)",
+            "cwd": "packages\\map_mvvm",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "profile"
+        },
+        {
+            "name": "map_mvvm (release mode)",
+            "cwd": "packages\\map_mvvm",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "release"
         }
     ]
 }

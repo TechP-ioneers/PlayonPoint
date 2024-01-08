@@ -24,13 +24,14 @@ class UserServiceMemory extends UserService {
   ];
 
   @override
-  Future<User> getUser() async {
-    return Future.value(users.isNotEmpty ? users[0] : User());
+  Future<User> getUser(String username) async {
+    return users.firstWhere((user) => user.name == username,
+        orElse: () => User(name: '', password: ''));
   }
 
   @override
-  Future<List<User>> getAllUser() {
-    return Future.value(users);
+  Future<List<User>> getAllUser() async {
+    return users;
   }
 
   @override
@@ -41,27 +42,32 @@ class UserServiceMemory extends UserService {
   }
 
   @override
-  Future<User> addUser(User data) {
+  Future<User> addUser(User data) async {
     int index = users.length;
     users.insert(index, data);
-    return Future.value(users[index]);
+    return (users[index]);
   }
 
   @override
-  Future<User> deleteUser(String id) {
+  Future<User> deleteUser(String id) async {
     final index = users.indexWhere((user) => user.getId() == id);
     users.removeAt(index);
-    return Future.value(users[index]);
+    return (users[index]);
   }
-  
-@override
-Future<User> fetchUserData(String email, String password) {
-  for (var user in users) {
-    if (user.getEmail() == email && user.getPassword() == password) {
-      return Future.value(user);
-    }
-  }
-  return Future.value(User());
-}
 
+  @override
+  Future<User> fetchUserData(String email, String password) async {
+    for (var user in users) {
+      if (user.getEmail() == email && user.getPassword() == password) {
+        return (user);
+      }
+    }
+    return Future.value(User());
+  }
+
+  @override
+  Future<bool> authenticateUser(String username, String password) async {
+    User user = await getUser(username);
+    return user.name.isNotEmpty && user.password == password;
+  }
 }
