@@ -33,7 +33,9 @@ class SettingViewModel extends Viewmodel {
       gender: selectedGender,
       userId: _user.getId(),
     );
+    
     updateUser(updatedUser);
+    update();
     Navigator.pop(context, updatedUser);
   }
 
@@ -80,7 +82,7 @@ class SettingViewModel extends Viewmodel {
     );
   }
 
-   Widget buildTextField(
+  Widget buildTextField(
       IconData icon, String label, TextEditingController controller) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,

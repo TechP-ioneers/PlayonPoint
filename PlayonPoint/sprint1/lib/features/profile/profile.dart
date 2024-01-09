@@ -128,17 +128,7 @@ class Profile extends StatelessWidget {
                         const SizedBox(height: 20),
                         buildInfoRow(
                             Icons.work, profileViewModel.user.getGender()),
-                        const SizedBox(height: 20),
                       ],
-                    ),
-                  ),
-                  const SizedBox(height: 20),
-                  Container(
-                    width: 300,
-                    height: 60,
-                    decoration: const BoxDecoration(
-                      color: Colors.lightGreenAccent,
-                      borderRadius: BorderRadius.all(Radius.circular(10)),
                     ),
                   ),
                 ],
