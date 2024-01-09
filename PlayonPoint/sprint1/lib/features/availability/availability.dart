@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:sprint1/features/booking/booking_viewmodel.dart';
-import '../booking/booking.dart';
 import '../../../features/availability/availability_viewmodel.dart';
 
 class AvailabilityState extends StatelessWidget {
@@ -29,7 +27,6 @@ class AvailabilityState extends StatelessWidget {
           viewModel.buildPingPongContainer(),
           const SizedBox(height: 10),
           viewModel.buildTimeSlotsContainer((timeSlot) => viewModel.handleTimeSlotTap(timeSlot, context)),
-
         ],
       ),
     );
