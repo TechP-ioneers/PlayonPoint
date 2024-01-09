@@ -6,7 +6,6 @@ import 'package:sprint1/features/login/login_viewmodel.dart';
 import 'package:sprint1/features/profile/profile.dart';
 import 'package:sprint1/features/profile/profile_viewmodel.dart';
 import 'package:sprint1/models/user_model.dart';
-import 'package:sprint1/services/user/user_service_memory.dart';
 import '../../../features/booking/booking_viewmodel.dart';
 import '../availability/availability.dart';
 
