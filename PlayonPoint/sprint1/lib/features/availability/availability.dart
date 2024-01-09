@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../booking/booking.dart';
+import '../../../features/booking/booking_viewmodel.dart';
 import '../../../features/availability/availability_viewmodel.dart';
 
 class Availability extends StatefulWidget {
@@ -44,7 +45,8 @@ class _AvailabilityState extends State<Availability> {
     Navigator.push(
       context,
       MaterialPageRoute(
-        builder: (context) => BookingPage(),
+       builder: (context) => BookingPage(viewModel: BookingViewModel()),
+
       ),
     );
   }
