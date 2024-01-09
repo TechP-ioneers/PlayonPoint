@@ -10,5 +10,6 @@ class Booking {
   });
 
   String getId() => id;
+  String selectedTimeSlot = '8 AM - 9 AM';
 }
 
