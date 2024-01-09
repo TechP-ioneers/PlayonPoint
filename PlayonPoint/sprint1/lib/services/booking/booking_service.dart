@@ -6,4 +6,5 @@ abstract class BookingService {
   Future<Booking> addBooking(Booking data);
   Future<Booking> deleteBooking(String id);
   Future<Booking> updateBooking(String id, Booking data);
+  Future<Booking> getBookingById(String bookingId);
 }

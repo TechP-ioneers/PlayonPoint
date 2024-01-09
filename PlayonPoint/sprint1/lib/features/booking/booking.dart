@@ -114,7 +114,7 @@ class BookingPage extends StatelessWidget {
               Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (context) => Availability(),
+                  builder: (context) => AvailabilityState(),
                 ),
               );
             },

@@ -1,6 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:sprint1/features/booking/booking.dart';
+import '../booking/booking_viewmodel.dart';
+import 'package:map_mvvm/view/viewmodel.dart';
 
-class AvailabilityViewModel {
+class AvailabilityViewModel extends Viewmodel{
+
+
   Widget buildPingPongContainer() {
     return Center(
       child: Container(
@@ -90,6 +95,15 @@ class AvailabilityViewModel {
             ),
           ),
         ),
+      ),
+    );
+  }
+
+   void handleTimeSlotTap(String timeSlot, BuildContext context) {
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => BookingPage(viewModel: BookingViewModel(),),
       ),
     );
   }

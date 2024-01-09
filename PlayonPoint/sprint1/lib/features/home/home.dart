@@ -61,7 +61,7 @@ class _HomeState extends State<Home> {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => const Availability(),
+                    builder: (context) => AvailabilityState(),
                   ),
                 );
               },
@@ -172,7 +172,7 @@ class _HomeState extends State<Home> {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => const Availability(),
+                            builder: (context) => AvailabilityState(),
                           ),
                         );
                       },
@@ -210,7 +210,7 @@ class _HomeState extends State<Home> {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => const Availability(),
+                            builder: (context) => AvailabilityState(),
                           ),
                         );
                       },
@@ -247,7 +247,7 @@ class _HomeState extends State<Home> {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => const Availability(),
+                            builder: (context) =>  AvailabilityState(),
                           ),
                         );
                       },

@@ -86,7 +86,7 @@ class HomeViewModel extends Viewmodel {
       onTap: () {
         Navigator.push(
           context,
-          MaterialPageRoute(builder: (context) => const Availability()),
+          MaterialPageRoute(builder: (context) =>  AvailabilityState()),
         );
       },
       child: Container(

@@ -37,14 +37,25 @@ class LoginView extends StatelessWidget {
             const SizedBox(height: 16.0),
             ElevatedButton(
               onPressed: () async {
-                User loggedUser = await viewModel.getUserData();
-                await viewModel.login(loggedUser,);
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => Home(passUser: loggedUser),
-                  ),
-                );
+                bool loginSuccess = await viewModel.login();
+
+                if (loginSuccess) {
+                  User loggedUser = await viewModel.getUserData();
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => Home(passUser: loggedUser),
+                    ),
+                  );
+                } else {
+                  // Show a Snackbar if login fails
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    SnackBar(
+                      content: Text(
+                          'Incorrect username or password. Please try again.'),
+                    ),
+                  );
+                }
               },
               child: const Text('Login'),
             ),

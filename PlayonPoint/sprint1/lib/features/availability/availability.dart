@@ -3,14 +3,7 @@ import 'package:sprint1/features/booking/booking_viewmodel.dart';
 import '../booking/booking.dart';
 import '../../../features/availability/availability_viewmodel.dart';
 
-class Availability extends StatefulWidget {
-  const Availability({Key? key}) : super(key: key);
-
-  @override
-  State<Availability> createState() => _AvailabilityState();
-}
-
-class _AvailabilityState extends State<Availability> {
+class AvailabilityState extends StatelessWidget {
   final AvailabilityViewModel viewModel = AvailabilityViewModel();
 
   @override
@@ -35,18 +28,12 @@ class _AvailabilityState extends State<Availability> {
           const SizedBox(height: 10),
           viewModel.buildPingPongContainer(),
           const SizedBox(height: 10),
-          viewModel.buildTimeSlotsContainer(_handleTimeSlotTap),
+          viewModel.buildTimeSlotsContainer((timeSlot) => viewModel.handleTimeSlotTap(timeSlot, context)),
+
         ],
       ),
     );
   }
 
-  void _handleTimeSlotTap(String timeSlot) {
-    Navigator.push(
-      context,
-      MaterialPageRoute(
-        builder: (context) => BookingPage(viewModel: BookingViewModel(),),
-      ),
-    );
-  }
+ 
 }
