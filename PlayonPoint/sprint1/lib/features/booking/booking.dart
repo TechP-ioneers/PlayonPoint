@@ -37,7 +37,7 @@ class BookingPage extends StatelessWidget {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Image.asset('images/pingpong.png', width: 48, height: 48),
+                    Image.asset('images/pingpong.png', width: 30, height: 30),
                     const SizedBox(height: 8),
                     const Text('Ping Pong'),
                   ],
@@ -55,7 +55,7 @@ class BookingPage extends StatelessWidget {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Image.asset('images/badminton.png', width: 48, height: 48),
+                    Image.asset('images/badminton.png', width: 30, height: 30),
                     const SizedBox(height: 8),
                     const Text('Badminton'),
                   ],
@@ -73,7 +73,7 @@ class BookingPage extends StatelessWidget {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Image.asset('images/squash.png', width: 48, height: 48),
+                    Image.asset('images/squash.png', width: 30, height: 30),
                     const SizedBox(height: 8),
                     const Text('Squash'),
                   ],
@@ -123,7 +123,7 @@ class BookingPage extends StatelessWidget {
           const SizedBox(height: 20),
           ElevatedButton(
             onPressed: () {
-              _showSubmissionSuccessMessage(context);
+              viewModel.showSubmissionSuccessMessage(context);
             },
             style: ElevatedButton.styleFrom(
               // backgroundColor: Colors.white,
@@ -135,14 +135,7 @@ class BookingPage extends StatelessWidget {
     );
   }
 
-  void _showSubmissionSuccessMessage(BuildContext context) {
-    ScaffoldMessenger.of(context).showSnackBar(
-      const SnackBar(
-        content: Text('Submission Successful!'),
-        duration: Duration(seconds: 5),
-      ),
-    );
-  }
+ 
 
   
 }

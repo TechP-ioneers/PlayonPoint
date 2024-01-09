@@ -4,9 +4,9 @@ import '../../models/user_model.dart';
 class UserServiceMemory extends UserService {
   final List<User> users = [
     User(
-      name: 'John Doe',
+      name: 'John',
       email: 'john@example.com',
-      password: 'password123',
+      password: '123',
       phone: '123-456-7890',
       address: '123 Main St',
       userId: 'user123',
@@ -15,7 +15,7 @@ class UserServiceMemory extends UserService {
     User(
       name: 'Johna Dee',
       email: 'dee@example.com',
-      password: 'password234',
+      password: '234',
       phone: '123-456-7890',
       address: '234 Main St',
       userId: 'user234',

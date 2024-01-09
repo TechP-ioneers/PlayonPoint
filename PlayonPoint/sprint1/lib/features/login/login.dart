@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:sprint1/features/home/home.dart';
+import 'package:sprint1/features/home/home_viewmodel.dart';
 import 'package:sprint1/features/login/login_viewmodel.dart';
 import 'package:sprint1/models/user_model.dart';
 
@@ -44,7 +45,7 @@ class LoginView extends StatelessWidget {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => Home(passUser: loggedUser),
+                      builder: (context) => Home(passUser: loggedUser, viewModel: HomeViewModel(passUser: loggedUser),),
                     ),
                   );
                 } else {

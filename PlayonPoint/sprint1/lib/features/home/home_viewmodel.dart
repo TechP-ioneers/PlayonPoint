@@ -4,6 +4,8 @@ import 'package:sprint1/configs/service_locator.dart';
 import 'package:sprint1/models/user_model.dart';
 import 'package:sprint1/services/user/user_service.dart';
 import '../availability/availability.dart';
+import '../booking/booking.dart';
+import '../booking/booking_viewmodel.dart';
 
 class HomeViewModel extends Viewmodel {
   late User _user;
@@ -20,6 +22,7 @@ class HomeViewModel extends Viewmodel {
     await _userService.getAllUser();
     update();
   }
+
 
   Widget buildNewsContainer() {
     return Center(
@@ -70,17 +73,6 @@ class HomeViewModel extends Viewmodel {
     );
   }
 
-  Widget buildSportsContainers(BuildContext context) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-      children: [
-        buildSportContainer(context, 'Ping Pong'),
-        buildSportContainer(context, 'Badminton'),
-        buildSportContainer(context, 'Squash'),
-      ],
-    );
-  }
-
   GestureDetector buildSportContainer(BuildContext context, String sport) {
     return GestureDetector(
       onTap: () {
@@ -112,4 +104,120 @@ class HomeViewModel extends Viewmodel {
       ),
     );
   }
+
+  
+
+Widget buildBookingPromptContainer() {
+  return Center(
+    child: Container(
+      width: 400,
+      height: 60,
+      decoration: const BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.all(Radius.circular(10)),
+      ),
+      child: Center(
+        child: Text(
+          'Want to book?',
+          style: TextStyle(
+            fontSize: 18,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+      ),
+    ),
+  );
+}
+
+GestureDetector buildBookHereContainer(BuildContext context) {
+  return GestureDetector(
+    onTap: () {
+      // Navigate to the booking page
+       Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                        builder: (context) => BookingPage(viewModel: BookingViewModel()),
+
+                  ),
+                );
+
+    },
+    child: Container(
+      width: 400,
+      height: 60,
+      decoration: BoxDecoration(
+        color: Colors.blue, // Customize the color as needed
+        borderRadius: BorderRadius.all(Radius.circular(10)),
+      ),
+      child: Center(
+        child: Text(
+          'Book Here',
+          style: TextStyle(
+            fontSize: 18,
+            fontWeight: FontWeight.bold,
+            color: Colors.white, // Text color
+          ),
+        ),
+      ),
+    ),
+  );
+}
+
+ Widget buildBookingContainer(BuildContext context) {
+    return Center(
+      child: Container(
+        width: 400,
+        height: 120,
+        decoration: const BoxDecoration(
+          color: Colors.black,
+          borderRadius: BorderRadius.all(Radius.circular(10)),
+        ),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text(
+              'Want to book?',
+              style: TextStyle(
+                fontSize: 18,
+                fontWeight: FontWeight.bold,
+                color: Colors.white,
+              ),
+            ),
+            const SizedBox(height: 10),
+            GestureDetector(
+              onTap: () {
+                // Navigate to the booking page
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) =>
+                        BookingPage(viewModel: BookingViewModel()),
+                  ),
+                );
+              },
+              child: Container(
+                width: 200,
+                height: 40,
+                decoration: BoxDecoration(
+                  color: Color(0xFFD6F454), // Customize the color as needed
+                  borderRadius: BorderRadius.all(Radius.circular(10)),
+                ),
+                child: Center(
+                  child: Text(
+                    'Book Here',
+                    style: TextStyle(
+                      fontSize: 16,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.white, // Text color
+                    ),
+                  ),
+                ),
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
 }

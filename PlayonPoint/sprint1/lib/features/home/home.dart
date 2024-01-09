@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:sprint1/features/booking/booking.dart';
+import 'package:sprint1/features/home/home_viewmodel.dart';
 import 'package:sprint1/features/login/login.dart';
 import 'package:sprint1/features/login/login_viewmodel.dart';
 import 'package:sprint1/features/profile/profile.dart';
@@ -9,16 +10,13 @@ import 'package:sprint1/services/user/user_service_memory.dart';
 import '../../../features/booking/booking_viewmodel.dart';
 import '../availability/availability.dart';
 
-class Home extends StatefulWidget {
+class Home extends StatelessWidget {
+
+  final HomeViewModel viewModel;
   final User passUser;
 
-  const Home({Key? key, required this.passUser}) : super(key: key);
+  const Home({Key? key, required this.passUser, required this.viewModel}) : super(key: key);
 
-  @override
-  _HomeState createState() => _HomeState();
-}
-
-class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -45,14 +43,14 @@ class _HomeState extends State<Home> {
               title: const Text('Profile'),
               onTap: () {
                 Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => Profile(
-                        passUser: widget.passUser,
-                        profileViewModel:
-                            ProfileViewModel(passUser: widget.passUser),
-                      ),
-                    ));
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => Profile(
+                      passUser: passUser,
+                      profileViewModel: ProfileViewModel(passUser: passUser),
+                    ),
+                  ),
+                );
               },
             ),
             ListTile(
@@ -84,8 +82,8 @@ class _HomeState extends State<Home> {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                        builder: (context) => BookingPage(viewModel: BookingViewModel()),
-
+                    builder: (context) =>
+                        BookingPage(viewModel: BookingViewModel()),
                   ),
                 );
               },
@@ -106,7 +104,7 @@ class _HomeState extends State<Home> {
             children: [
               const SizedBox(height: 10),
               Text(
-                'Welcome, ${widget.passUser.getName()}!',
+                'Welcome, ${passUser.getName()}!',
                 style: const TextStyle(
                   fontSize: 30,
                   fontWeight: FontWeight.bold,
@@ -160,127 +158,10 @@ class _HomeState extends State<Home> {
                 ),
               ),
               const SizedBox(height: 20),
-              // Containers for Ping Pong, Badminton, and Squash
-              SizedBox(
-                width: 400,
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  children: [
-                    // Container for Ping Pong
-                    GestureDetector(
-                      onTap: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => AvailabilityState(),
-                          ),
-                        );
-                      },
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Container(
-                            width: 100,
-                            height: 120,
-                            decoration: const BoxDecoration(
-                              color: Colors.white,
-                              borderRadius:
-                                  BorderRadius.all(Radius.circular(10)),
-                            ),
-                            child: const Column(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                SizedBox(height: 10),
-                                Text(
-                                  'Ping Pong',
-                                  style: TextStyle(
-                                    fontSize: 18,
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                    // Container for Badminton
-                    GestureDetector(
-                      onTap: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => AvailabilityState(),
-                          ),
-                        );
-                      },
-                      child: Column(
-                        children: [
-                          Container(
-                            width: 100,
-                            height: 120,
-                            decoration: const BoxDecoration(
-                              color: Colors.white,
-                              borderRadius:
-                                  BorderRadius.all(Radius.circular(10)),
-                            ),
-                            child: const Column(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                SizedBox(height: 10),
-                                Text(
-                                  'Badminton',
-                                  style: TextStyle(
-                                    fontSize: 18,
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                    // Container for Squash
-                    GestureDetector(
-                      onTap: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) =>  AvailabilityState(),
-                          ),
-                        );
-                      },
-                      child: Column(
-                        children: [
-                          Container(
-                            width: 100,
-                            height: 120,
-                            decoration: const BoxDecoration(
-                              color: Colors.white,
-                              borderRadius:
-                                  BorderRadius.all(Radius.circular(10)),
-                            ),
-                            child: const Column(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                SizedBox(height: 10),
-                                Text(
-                                  'Squash',
-                                  style: TextStyle(
-                                    fontSize: 18,
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ],
-                ),
-              ),
+
+              // Container for "Want to book?" and "Book Here"
+              viewModel.buildBookingContainer(context),
+
               const SizedBox(height: 20),
               const SizedBox(
                 width: 600,
@@ -296,4 +177,6 @@ class _HomeState extends State<Home> {
       ),
     );
   }
+
+ 
 }
