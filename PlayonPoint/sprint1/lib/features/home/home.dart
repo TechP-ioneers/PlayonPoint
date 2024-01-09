@@ -48,7 +48,8 @@ class _HomeState extends State<Home> {
                     MaterialPageRoute(
                       builder: (context) => Profile(
                         passUser: widget.passUser,
-                        viewModel: ProfileViewModel(passUser: widget.passUser),
+                        profileViewModel:
+                            ProfileViewModel(passUser: widget.passUser),
                       ),
                     ));
               },
@@ -70,8 +71,8 @@ class _HomeState extends State<Home> {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => LoginView(
-                        viewModel: LoginViewModel(context: context)),
+                    builder: (context) =>
+                        LoginView(viewModel: LoginViewModel(context: context)),
                   ),
                 );
               },

@@ -1,33 +1,22 @@
 // setting.dart
 import 'package:flutter/material.dart';
+import 'package:sprint1/features/setting/setting_viewmodel.dart';
 import 'package:sprint1/models/user_model.dart';
 
 class Setting extends StatelessWidget {
+  final SettingViewModel settingViewModel;
   final User passUser;
+  
   final TextEditingController emailController = TextEditingController();
   final TextEditingController phoneController = TextEditingController();
   final TextEditingController addressController = TextEditingController();
-   String selectedGender = '';
+  String selectedGender = '';
 
-  Setting({Key? key, required this.passUser}) : super(key: key) {
+  Setting({Key? key, required this.passUser, required this.settingViewModel}) : super(key: key) {
     emailController.text = passUser.getEmail();
     phoneController.text = passUser.getPhone();
     addressController.text = passUser.getAddress();
     selectedGender = passUser.getGender();
-  }
-
-  void saveChanges(BuildContext context) {
-    final updatedUser = User(
-      name: passUser.getName(),
-      email: emailController.text,
-      password: passUser.getPassword(),
-      phone: phoneController.text,
-      address: addressController.text,
-      gender: selectedGender,
-      userId: passUser.getId(),
-    );
-
-    Navigator.pop(context, updatedUser);
   }
 
   @override
@@ -67,8 +56,8 @@ class Setting extends StatelessWidget {
                   child: const Center(
                     child: Text(
                       'Active Student',
-                      style: TextStyle(
-                          fontSize: 18, fontWeight: FontWeight.bold),
+                      style:
+                          TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
                     ),
                   ),
                 ),
@@ -105,7 +94,7 @@ class Setting extends StatelessWidget {
                 ),
                 const SizedBox(height: 20),
                 ElevatedButton(
-                  onPressed: () => saveChanges(context),
+                  onPressed: () => settingViewModel.saveChanges(context),
                   child: const Text('Save Changes'),
                 ),
               ],

@@ -1,12 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:sprint1/features/profile/profile_viewmodel.dart';
+import 'package:sprint1/features/setting/setting_viewmodel.dart';
 import 'package:sprint1/models/user_model.dart';
 import '../setting/setting.dart';
 
 class Profile extends StatelessWidget {
-  final ProfileViewModel viewModel;
+  final ProfileViewModel profileViewModel;
 
-  const Profile({Key? key, required this.viewModel, required User passUser}) : super(key: key);
+  const Profile(
+      {Key? key, required this.profileViewModel, required User passUser})
+      : super(key: key);
 
   Widget buildInfoRow(IconData icon, String text) {
     return Row(
@@ -40,12 +43,14 @@ class Profile extends StatelessWidget {
               final updatedUser = await Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (context) => Setting(passUser: viewModel.user),
+                  builder: (context) => Setting(
+                    passUser: profileViewModel.user, settingViewModel: SettingViewModel(passUser: profileViewModel.user),
+                  ),
                 ),
               );
 
               if (updatedUser != null) {
-                viewModel.updateUser(updatedUser);
+                profileViewModel.updateUser(updatedUser);
               }
             },
             icon: const Icon(Icons.settings),
@@ -68,12 +73,12 @@ class Profile extends StatelessWidget {
                   ),
                   const SizedBox(height: 10),
                   Text(
-                    '${viewModel.user.getName()}',
+                    '${profileViewModel.user.getName()}',
                     style: const TextStyle(
                         fontWeight: FontWeight.bold, fontSize: 21.5),
                   ),
                   Text(
-                    '${viewModel.user.getId()}',
+                    '${profileViewModel.user.getId()}',
                     style: const TextStyle(fontSize: 16),
                   ),
                   const SizedBox(height: 10),
@@ -112,13 +117,17 @@ class Profile extends StatelessWidget {
                           ),
                         ),
                         const SizedBox(height: 20),
-                        buildInfoRow(Icons.person, viewModel.user.getEmail()),
+                        buildInfoRow(
+                            Icons.person, profileViewModel.user.getEmail()),
                         const SizedBox(height: 20),
-                        buildInfoRow(Icons.phone, viewModel.user.getPhone()),
+                        buildInfoRow(
+                            Icons.phone, profileViewModel.user.getPhone()),
                         const SizedBox(height: 20),
-                        buildInfoRow(Icons.home, viewModel.user.getAddress()),
+                        buildInfoRow(
+                            Icons.home, profileViewModel.user.getAddress()),
                         const SizedBox(height: 20),
-                        buildInfoRow(Icons.work, viewModel.user.getGender()),
+                        buildInfoRow(
+                            Icons.work, profileViewModel.user.getGender()),
                         const SizedBox(height: 20),
                       ],
                     ),

@@ -22,7 +22,7 @@ class LoginView extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Image.asset(
-              'lib/icon/logo sporthall.png',
+              'images/logo sporthall.png',
             ),
             TextField(
               controller: viewModel.usernameController,

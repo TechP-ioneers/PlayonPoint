@@ -40,11 +40,6 @@ class SettingViewModel extends Viewmodel {
     Navigator.pop(context, updatedUser);
   }
 
-  void getUser() {
-    _user = User();
-    update();
-  }
-
   Future<void> updateUser(User updatedUser) async {
     await _userService.updateUser(updatedUser.getId(), updatedUser);
     _user = updatedUser;
