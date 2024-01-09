@@ -35,10 +35,10 @@ class UserServiceMemory extends UserService {
   }
 
   @override
-  Future<User> updateUser(String id, User data) {
+  Future<User> updateUser(String id, User data) async{
     final index = users.indexWhere((user) => user.getId() == id);
     users[index] = data;
-    return Future.value(users[index]);
+    return (users[index]);
   }
 
   @override

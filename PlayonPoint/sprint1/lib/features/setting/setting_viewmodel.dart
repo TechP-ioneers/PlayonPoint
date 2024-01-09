@@ -7,9 +7,7 @@ import 'package:sprint1/services/user/user_service.dart';
 
 class SettingViewModel extends Viewmodel {
   late User _user;
-
   final UserService _userService = locator();
-
   TextEditingController emailController = TextEditingController();
   TextEditingController phoneController = TextEditingController();
   TextEditingController addressController = TextEditingController();
@@ -35,7 +33,6 @@ class SettingViewModel extends Viewmodel {
       gender: selectedGender,
       userId: _user.getId(),
     );
-
     updateUser(updatedUser);
     Navigator.pop(context, updatedUser);
   }
@@ -49,5 +46,59 @@ class SettingViewModel extends Viewmodel {
   void updateSelectedGender(String value) {
     selectedGender = value;
     update();
+  }
+
+  Widget buildGenderDropdown() {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        const SizedBox(width: 10),
+        Expanded(
+          child: SizedBox(
+            width: 250,
+            child: DropdownButtonFormField<String>(
+              value: selectedGender,
+              onChanged: (String? value) {
+                selectedGender = value!;
+                update();
+              },
+              items: ['Female', 'Male']
+                  .map((gender) => DropdownMenuItem(
+                        value: gender,
+                        child: Text(gender),
+                      ))
+                  .toList(),
+              decoration: const InputDecoration(
+                labelText: 'Gender',
+                border: OutlineInputBorder(),
+                prefixIcon: Icon(Icons.person),
+              ),
+            ),
+          ),
+        ),
+      ],
+    );
+  }
+
+   Widget buildTextField(
+      IconData icon, String label, TextEditingController controller) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        Expanded(
+          child: SizedBox(
+            width: 250,
+            child: TextField(
+              controller: controller,
+              decoration: InputDecoration(
+                labelText: label,
+                border: const OutlineInputBorder(),
+                prefixIcon: Icon(icon),
+              ),
+            ),
+          ),
+        ),
+      ],
+    );
   }
 }

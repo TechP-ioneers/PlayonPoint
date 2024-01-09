@@ -1,8 +1,6 @@
-
 import 'package:flutter/material.dart';
 import 'package:map_mvvm/view/viewmodel.dart';
 import 'package:sprint1/configs/service_locator.dart';
-import 'package:sprint1/features/home/home.dart';
 import 'package:sprint1/models/user_model.dart';
 import 'package:sprint1/services/user/user_service.dart';
 
@@ -22,13 +20,13 @@ class LoginViewModel extends Viewmodel {
 
     if (isAuthenticated) {
       loggedUser = await _userService.getUser(username);
-
-    } else {}
+    } else {
+      print("User Not Found!");
+    }
     update();
   }
 
-   Future<User> getUserData() async {
-    // Fetch user data after successful authentication
+  Future<User> getUserData() async {
     String username = usernameController.text;
     return await _userService.getUser(username);
   }
