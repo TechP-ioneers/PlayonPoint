@@ -46,7 +46,6 @@ class Home extends StatelessWidget {
                   MaterialPageRoute(
                     builder: (context) => Profile(
                       passUser: passUser,
-                      profileViewModel: ProfileViewModel(passUser: passUser),
                     ),
                   ),
                 );

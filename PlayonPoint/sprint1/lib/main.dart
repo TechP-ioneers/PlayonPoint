@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:sprint1/features/login/login.dart';
 import 'package:sprint1/features/login/login_viewmodel.dart';
-import '../configs/service_locator.dart';
+import 'configs/service_locator.dart';
 
 void main() {
   
-  runApp( MyApp());
+  runApp( const MyApp());
 
   initilizeServiceLocator();
 }
