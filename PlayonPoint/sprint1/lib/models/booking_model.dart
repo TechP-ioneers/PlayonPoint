@@ -2,6 +2,7 @@ class Booking {
   String id;
   String selectedActivity = 'Ping Pong';
   int playerQuantity;
+  String selectedTimeSlot = '8 AM - 9 AM';
 
   Booking({
     this.id = '',
@@ -10,6 +11,5 @@ class Booking {
   });
 
   String getId() => id;
-  String selectedTimeSlot = '8 AM - 9 AM';
 }
 
