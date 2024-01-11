@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:map_mvvm/view/viewmodel.dart';
-import 'package:sprint1/configs/service_locator.dart';
-import 'package:sprint1/models/user_model.dart';
-import 'package:sprint1/services/user/user_service.dart';
+import '../../configs/service_locator.dart';
+import '../../models/user_model.dart';
+import '../../services/user/user_service.dart';
 import '../availability/availability.dart';
 import '../booking/booking.dart';
-import '../booking/booking_viewmodel.dart';
 
 class HomeViewModel extends Viewmodel {
   late User _user;
@@ -116,7 +115,7 @@ Widget buildBookingPromptContainer() {
         color: Colors.white,
         borderRadius: BorderRadius.all(Radius.circular(10)),
       ),
-      child: Center(
+      child: const Center(
         child: Text(
           'Want to book?',
           style: TextStyle(
@@ -136,7 +135,7 @@ GestureDetector buildBookHereContainer(BuildContext context) {
        Navigator.push(
                   context,
                   MaterialPageRoute(
-                        builder: (context) => BookingPage(viewModel: BookingViewModel()),
+                        builder: (context) => BookingPage(),
 
                   ),
                 );
@@ -145,11 +144,11 @@ GestureDetector buildBookHereContainer(BuildContext context) {
     child: Container(
       width: 400,
       height: 60,
-      decoration: BoxDecoration(
+      decoration: const BoxDecoration(
         color: Colors.blue, // Customize the color as needed
         borderRadius: BorderRadius.all(Radius.circular(10)),
       ),
-      child: Center(
+      child: const Center(
         child: Text(
           'Book Here',
           style: TextStyle(
@@ -175,7 +174,7 @@ GestureDetector buildBookHereContainer(BuildContext context) {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text(
+            const Text(
               'Want to book?',
               style: TextStyle(
                 fontSize: 18,
@@ -191,18 +190,18 @@ GestureDetector buildBookHereContainer(BuildContext context) {
                   context,
                   MaterialPageRoute(
                     builder: (context) =>
-                        BookingPage(viewModel: BookingViewModel()),
+                        BookingPage(),
                   ),
                 );
               },
               child: Container(
                 width: 200,
                 height: 40,
-                decoration: BoxDecoration(
+                decoration: const BoxDecoration(
                   color: Color(0xFFD6F454), // Customize the color as needed
                   borderRadius: BorderRadius.all(Radius.circular(10)),
                 ),
-                child: Center(
+                child: const Center(
                   child: Text(
                     'Book Here',
                     style: TextStyle(

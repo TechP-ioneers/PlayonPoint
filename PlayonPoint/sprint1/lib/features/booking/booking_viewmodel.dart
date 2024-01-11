@@ -2,7 +2,7 @@ import 'package:sprint1/configs/service_locator.dart';
 import 'package:sprint1/models/booking_model.dart';
 import 'package:map_mvvm/view/viewmodel.dart';
 import 'package:flutter/material.dart';
-import 'package:sprint1/services/booking/booking_service.dart';
+import '../../services/booking/booking_service.dart';
 
 class BookingViewModel extends Viewmodel {
   final Booking _model = Booking();
@@ -10,6 +10,17 @@ class BookingViewModel extends Viewmodel {
 
   String get selectedActivity => _model.selectedActivity;
   int get playerQuantity => _model.playerQuantity;
+
+  Future<void> submitBooking(BuildContext context) async {
+    final booking = Booking(
+      selectedActivity: _model.selectedActivity,
+      playerQuantity: _model.playerQuantity,
+    );
+
+    await _bookingService.addBooking(booking);
+    showSubmissionSuccessMessage(context);
+    update();
+  }
 
   void setActivity(String activity) {
     _model.selectedActivity = activity;

@@ -4,13 +4,15 @@ import '../../../features/availability/availability_viewmodel.dart';
 class AvailabilityState extends StatelessWidget {
   final AvailabilityViewModel viewModel = AvailabilityViewModel();
 
+  AvailabilityState({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.purple,
       appBar: AppBar(
         backgroundColor: Colors.lightGreenAccent,
-        title: Text('Availability'),
+        title: const Text('Availability'),
       ),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,

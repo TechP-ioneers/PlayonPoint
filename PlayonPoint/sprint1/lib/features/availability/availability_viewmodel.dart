@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:sprint1/features/booking/booking.dart';
-import '../booking/booking_viewmodel.dart';
 import 'package:map_mvvm/view/viewmodel.dart';
 
 class AvailabilityViewModel extends Viewmodel{
@@ -47,14 +46,14 @@ class AvailabilityViewModel extends Viewmodel{
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Text(
+          const Text(
             "Time",
             style: TextStyle(
               fontSize: 20,
               fontWeight: FontWeight.bold,
             ),
           ),
-          SizedBox(height: 10),
+          const SizedBox(height: 10),
           // Rows of time slots from 8 AM to 9 PM with increased spacing
           for (int hour = 8; hour < 21; hour += 2)
             Row(
@@ -87,14 +86,14 @@ class AvailabilityViewModel extends Viewmodel{
     child: Container(
       width: 150,
       height: 30,
-      decoration: BoxDecoration(
+      decoration: const BoxDecoration(
         color: Colors.lightGreenAccent,
         borderRadius: BorderRadius.all(Radius.circular(5)),
       ),
       child: Center(
         child: Text(
           timeSlot,
-          style: TextStyle(
+          style: const TextStyle(
             fontSize: 16,
             fontWeight: FontWeight.bold,
           ),
@@ -108,7 +107,7 @@ class AvailabilityViewModel extends Viewmodel{
     Navigator.push(
       context,
       MaterialPageRoute(
-        builder: (context) => BookingPage(viewModel: BookingViewModel(),),
+        builder: (context) => BookingPage(),
       ),
     );
   }

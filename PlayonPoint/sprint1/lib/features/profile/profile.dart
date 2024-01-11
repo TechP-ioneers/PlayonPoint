@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:map_mvvm/view/view.dart';
-import 'package:sprint1/features/profile/profile_viewmodel.dart';
-import 'package:sprint1/features/setting/setting_viewmodel.dart';
-import 'package:sprint1/models/user_model.dart';
+import 'profile_viewmodel.dart';
+import '../../models/user_model.dart';
 import '../setting/setting.dart';
 
 class Profile extends StatelessWidget {
@@ -41,7 +40,7 @@ class Profile extends StatelessWidget {
                   context,
                   MaterialPageRoute(
                     builder: (context) => Setting(
-                      passUser: viewmodel.user, settingViewModel: SettingViewModel(passUser: viewmodel.user),
+                      passUser: viewmodel.user,
                     ),
                   ),
                 );
@@ -54,7 +53,7 @@ class Profile extends StatelessWidget {
             ),
           ],
         ),
-        
+
         body: ViewWrapper<ProfileViewModel>(builder: (context, viewmodel) => Container(
             width: double.infinity,
             height: double.infinity,

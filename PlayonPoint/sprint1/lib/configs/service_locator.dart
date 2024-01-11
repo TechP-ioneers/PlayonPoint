@@ -1,5 +1,6 @@
 import 'package:map_mvvm/app/service_locator.dart';
 import 'package:sprint1/features/booking/booking_viewmodel.dart';
+import 'package:sprint1/features/login/login_viewmodel.dart';
 import 'package:sprint1/features/setting/setting_viewmodel.dart';
 import 'package:sprint1/models/user_model.dart';
 import 'package:sprint1/services/news/news_service.dart';
@@ -21,5 +22,5 @@ void initilizeServiceLocator() {
   locator.registerFactory<SettingViewModel>(
       () => SettingViewModel(passUser: User()));
       locator.registerFactory<BookingViewModel>(() => BookingViewModel());
-  //locator.registerFactory<LoginViewModel>(() => LoginViewModel(viewModel: LoginViewModel(UserServiceMemory())));
+      locator.registerFactory<LoginViewModel>(() => LoginViewModel());
 }
