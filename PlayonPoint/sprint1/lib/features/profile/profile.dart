@@ -5,7 +5,8 @@ import '../../models/user_model.dart';
 import '../setting/setting.dart';
 
 class Profile extends StatelessWidget {
-  const Profile({Key? key, required User passUser}) : super(key: key);
+  final User passUser;
+  const Profile({Key? key, required this.passUser}) : super(key: key);
 
   Widget buildInfoRow(IconData icon, String text) {
     return Row(
@@ -26,7 +27,7 @@ class Profile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ViewWrapper<ProfileViewModel>(builder: (context, viewmodel) => Scaffold(
+    return ViewWrapper<ProfileViewModel>(builder: (context , viewmodel) =>  Scaffold(
         backgroundColor: const Color(0xFFb364f3),
         appBar: AppBar(
           backgroundColor: Colors.lightGreenAccent,
@@ -36,25 +37,21 @@ class Profile extends StatelessWidget {
           actions: [
             IconButton(
               onPressed: () async {
-                final updatedUser = await Navigator.push(
+                Navigator.push(
                   context,
                   MaterialPageRoute(
                     builder: (context) => Setting(
-                      passUser: viewmodel.user,
+                      passUser: passUser, onUpdateUser: (updatedUser) {},
                     ),
                   ),
                 );
-      
-                if (updatedUser != null) {
-                  viewmodel.updateUser(updatedUser);
-                }
               },
               icon: const Icon(Icons.settings),
             ),
           ],
         ),
-
-        body: ViewWrapper<ProfileViewModel>(builder: (context, viewmodel) => Container(
+        body: ViewWrapper<ProfileViewModel>(
+          builder: (context, viewmodel) => Container(
             width: double.infinity,
             height: double.infinity,
             decoration: const BoxDecoration(),
@@ -70,12 +67,12 @@ class Profile extends StatelessWidget {
                       ),
                       const SizedBox(height: 10),
                       Text(
-                        '${viewmodel.user.getName()}',
+                        '${passUser.getName()}',
                         style: const TextStyle(
                             fontWeight: FontWeight.bold, fontSize: 21.5),
                       ),
                       Text(
-                        '${viewmodel.user.getId()}',
+                        '${passUser.getId()}',
                         style: const TextStyle(fontSize: 16),
                       ),
                       const SizedBox(height: 10),
@@ -114,17 +111,13 @@ class Profile extends StatelessWidget {
                               ),
                             ),
                             const SizedBox(height: 20),
-                            buildInfoRow(
-                                Icons.person, viewmodel.user.getEmail()),
+                            buildInfoRow(Icons.person, passUser.getEmail()),
                             const SizedBox(height: 20),
-                            buildInfoRow(
-                                Icons.phone, viewmodel.user.getPhone()),
+                            buildInfoRow(Icons.phone, passUser.getPhone()),
                             const SizedBox(height: 20),
-                            buildInfoRow(
-                                Icons.home, viewmodel.user.getAddress()),
+                            buildInfoRow(Icons.home, passUser.getAddress()),
                             const SizedBox(height: 20),
-                            buildInfoRow(
-                                Icons.work, viewmodel.user.getGender()),
+                            buildInfoRow(Icons.work, passUser.getGender()),
                           ],
                         ),
                       ),

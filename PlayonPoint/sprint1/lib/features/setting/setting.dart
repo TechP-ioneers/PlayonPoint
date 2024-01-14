@@ -1,52 +1,41 @@
 // setting.dart
+
 import 'package:flutter/material.dart';
 import 'package:map_mvvm/view/view.dart';
-import 'setting_viewmodel.dart';
-import '../../models/user_model.dart';
-
+import 'package:sprint1/features/setting/setting_viewmodel.dart';
+import 'package:sprint1/models/user_model.dart';
 class Setting extends StatelessWidget {
   final User passUser;
+  final Function(User) onUpdateUser;
 
-  final TextEditingController emailController = TextEditingController();
-  final TextEditingController phoneController = TextEditingController();
-  final TextEditingController addressController = TextEditingController();
-  String selectedGender = '';
-
-  Setting({Key? key, required this.passUser})
-      : super(key: key) {
-    emailController.text = passUser.getEmail();
-    phoneController.text = passUser.getPhone();
-    addressController.text = passUser.getAddress();
-    selectedGender = passUser.getGender();
-  }
+  const Setting({
+    Key? key,
+    required this.passUser,
+    required this.onUpdateUser,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return ViewWrapper<SettingViewModel>(builder: (context, viewmodel) => Scaffold(
-        backgroundColor: const Color(0xFFb364f3),
+       backgroundColor: const Color(0xFFb364f3),
         appBar: AppBar(
           backgroundColor: Colors.lightGreenAccent,
+          title: const Text('Settings'),
         ),
-        
-        body: Container(
-          width: double.infinity,
-          height: double.infinity,
-          decoration: const BoxDecoration(),
-          child: SingleChildScrollView(
+        body: SingleChildScrollView(
             child: Center(
               child: Padding(
                 padding: const EdgeInsets.all(20),
                 child: Column(
                   children: [
-                    const CircleAvatar(
-                      radius: 50,
-                      backgroundColor: Colors.amber,
-                    ),
+                    buildProfilePicture(),
                     const SizedBox(height: 10),
                     Text(
                       '${passUser.getName()}',
                       style: const TextStyle(
-                          fontWeight: FontWeight.bold, fontSize: 21.5),
+                        fontWeight: FontWeight.bold,
+                        fontSize: 21.5,
+                      ),
                     ),
                     Text(
                       '${passUser.getId()}',
@@ -63,8 +52,10 @@ class Setting extends StatelessWidget {
                       child: const Center(
                         child: Text(
                           'Active Student',
-                          style:
-                              TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                          style: TextStyle(
+                            fontSize: 18,
+                            fontWeight: FontWeight.bold,
+                          ),
                         ),
                       ),
                     ),
@@ -88,20 +79,21 @@ class Setting extends StatelessWidget {
                             ),
                           ),
                           const SizedBox(height: 10),
-                          viewmodel.buildTextField(Icons.email, 'Email', emailController),
+                          buildTextField(Icons.email, 'Email', passUser.getEmail()),
                           const SizedBox(height: 10),
-                          viewmodel.buildTextField(
-                              Icons.phone, 'Phone Number', phoneController),
+                          buildTextField(
+                              Icons.phone, 'Phone Number', passUser.getPhone()),
                           const SizedBox(height: 10),
-                          viewmodel.buildTextField(Icons.home, 'Address', addressController),
+                          buildTextField(
+                              Icons.home, 'Address', passUser.getAddress()),
                           const SizedBox(height: 10),
-                          viewmodel.buildGenderDropdown(),
+                          buildGenderDropdown(),
                         ],
                       ),
                     ),
-                    const SizedBox(height: 20),
+                    const SizedBox(height: 10),
                     ElevatedButton(
-                      onPressed: () => viewmodel.saveChanges(context),
+                        onPressed: () => viewmodel.saveChanges(context),
                       child: const Text('Save Changes'),
                     ),
                   ],
@@ -109,8 +101,67 @@ class Setting extends StatelessWidget {
               ),
             ),
           ),
-        ),
       ),
     );
   }
+
+  Widget buildTextField(IconData icon, String label, String value) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        const SizedBox(width: 10),
+        Expanded(
+          child: SizedBox(
+            width: 250,
+            child: TextField(
+              readOnly: true,
+              controller: TextEditingController(text: value),
+              decoration: InputDecoration(
+                labelText: label,
+                border: const OutlineInputBorder(),
+                prefixIcon: Icon(icon),
+              ),
+            ),
+          ),
+        ),
+      ],
+    );
+  }
+
+  Widget buildGenderDropdown() {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        const SizedBox(width: 10),
+        Expanded(
+          child: SizedBox(
+            width: 250,
+            child: DropdownButtonFormField<String>(
+              value: passUser.getGender(),
+              onChanged: null,
+              items: ['Female', 'Male']
+                  .map((gender) => DropdownMenuItem(
+                        value: gender,
+                        child: Text(gender),
+                      ))
+                  .toList(),
+              decoration: const InputDecoration(
+                labelText: 'Gender',
+                border: OutlineInputBorder(),
+                prefixIcon: Icon(Icons.person),
+              ),
+            ),
+          ),
+        ),
+      ],
+    );
+  }
+
+  Widget buildProfilePicture() {
+    return const CircleAvatar(
+      radius: 50,
+      backgroundColor: Colors.amber,
+    );
+  }
+
 }
