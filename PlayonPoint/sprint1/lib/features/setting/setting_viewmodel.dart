@@ -49,4 +49,5 @@ class SettingViewModel extends Viewmodel {
     selectedGender = value;
     update();
   }
+
 }
