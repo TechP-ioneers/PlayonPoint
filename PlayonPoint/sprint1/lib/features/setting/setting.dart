@@ -2,18 +2,15 @@
 
 import 'package:flutter/material.dart';
 import 'package:map_mvvm/view/view.dart';
-import 'package:map_mvvm/view/viewmodel.dart';
 import 'package:sprint1/features/setting/setting_viewmodel.dart';
 import 'package:sprint1/models/user_model.dart';
 
 class Setting extends StatelessWidget {
   final User passUser;
-  final Function(User) onUpdateUser;
 
   const Setting({
     Key? key,
     required this.passUser,
-    required this.onUpdateUser,
   }) : super(key: key);
 
   @override
@@ -91,34 +88,7 @@ class Setting extends StatelessWidget {
                         buildTextField(
                             Icons.home, 'Address', viewmodel.addressController),
                         const SizedBox(height: 10),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            const SizedBox(width: 10),
-                            Expanded(
-                              child: SizedBox(
-                                width: 250,
-                                child: DropdownButtonFormField<String>(
-                                  value: viewmodel.selectedGender,
-                                  onChanged: (String? value) {
-                                    viewmodel.selectedGender = value!;
-                                  },
-                                  items: ['Female', 'Male']
-                                      .map((gender) => DropdownMenuItem(
-                                            value: gender,
-                                            child: Text(gender),
-                                          ))
-                                      .toList(),
-                                  decoration: const InputDecoration(
-                                    labelText: 'Gender',
-                                    border: OutlineInputBorder(),
-                                    prefixIcon: Icon(Icons.person),
-                                  ),
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
+                        buildTextField(Icons.person , 'Gender', viewmodel.genderController)
                       ],
                     ),
                   ),

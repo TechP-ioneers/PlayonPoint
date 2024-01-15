@@ -11,14 +11,14 @@ class SettingViewModel extends Viewmodel {
   TextEditingController emailController = TextEditingController();
   TextEditingController phoneController = TextEditingController();
   TextEditingController addressController = TextEditingController();
-  String selectedGender = '';
+  TextEditingController genderController = TextEditingController();
 
   SettingViewModel({required User passUser}) {
     _user = passUser;
     emailController.text = _user.getEmail();
     phoneController.text = _user.getPhone();
     addressController.text = _user.getAddress();
-    selectedGender = _user.getGender();
+    genderController.text = _user.getGender();
   }
 
   User get user => _user;
@@ -30,7 +30,7 @@ class SettingViewModel extends Viewmodel {
       password: _user.getPassword(),
       phone: phoneController.text,
       address: addressController.text,
-      gender: selectedGender,
+      gender: genderController.text,
       userId: _user.getId(),
     );
 
@@ -44,10 +44,4 @@ class SettingViewModel extends Viewmodel {
     _user = updatedUser;
     update();
   }
-
-  void updateSelectedGender(String value) {
-    selectedGender = value;
-    update();
-  }
-
 }

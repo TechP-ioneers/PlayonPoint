@@ -41,7 +41,7 @@ class Profile extends StatelessWidget {
                   context,
                   MaterialPageRoute(
                     builder: (context) => Setting(
-                      passUser: passUser, onUpdateUser: (updatedUser) {},
+                      passUser: passUser,
                     ),
                   ),
                 );
@@ -111,13 +111,13 @@ class Profile extends StatelessWidget {
                               ),
                             ),
                             const SizedBox(height: 20),
-                            buildInfoRow(Icons.person, passUser.getEmail()),
+                            buildInfoRow(Icons.email, passUser.getEmail()),
                             const SizedBox(height: 20),
                             buildInfoRow(Icons.phone, passUser.getPhone()),
                             const SizedBox(height: 20),
                             buildInfoRow(Icons.home, passUser.getAddress()),
                             const SizedBox(height: 20),
-                            buildInfoRow(Icons.work, passUser.getGender()),
+                            buildInfoRow(Icons.person, passUser.getGender()),
                           ],
                         ),
                       ),
