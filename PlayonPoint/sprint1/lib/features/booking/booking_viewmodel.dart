@@ -65,18 +65,18 @@ class BookingViewModel extends Viewmodel {
     update();
   }
 
+    Future<void> updateBooking(String id, Booking data) async {
+    await _bookingService.updateBooking(id, data);
+    int index = _bookList.indexWhere((element) => element.getId() == id);
+    _bookList[index] = data;
+    update();
+  }
+
   @override
   void init() {
     getAllBooking();
     super.init();
   }
-
-  // Future<void> updateBooking(String id, Booking data) async {
-  //   await _bookingService.updateBooking(id, data);
-  //   int index = _bookList.indexWhere((element) => element.getId() == id);
-  //   _bookList[index] = data;
-  //   update();
-  // }
 
   // Future<void> getBooking(String id) async {
   //   await _bookingService.getBooking(id);

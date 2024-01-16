@@ -10,13 +10,23 @@ class BookingServiceMemory extends BookingService {
     ),
     Booking(
       id: '2',
-      selectedActivity: 'Tennis',
+      selectedActivity: 'Ping Pong',
       playerQuantity: 4,
     ),
     Booking(
       id: '3',
       selectedActivity: 'Squash',
       playerQuantity: 3,
+    ),
+    Booking(
+      id: '4',
+      selectedActivity: 'Badminton',
+      playerQuantity: 2,
+      ),
+    Booking(
+      id: '5',
+      selectedActivity: 'Ping Pong',
+      playerQuantity: 4,
     ),
   ];
   @override
@@ -39,17 +49,16 @@ class BookingServiceMemory extends BookingService {
   }
 
   @override
-  Future<Booking> getBooking(String id) {
-    throw UnimplementedError();
+  Future<Booking> getBooking(String id) async{
+  Booking result = book.firstWhere((book) => book.getId() == id,
+        orElse: () => Booking(id: '', selectedActivity: '', playerQuantity: 0));
+    return result;
   }
 
   @override
-  Future<Booking> getBookingById(String bookingId) {
-    throw UnimplementedError();
-  }
-
-  @override
-  Future<Booking> updateBooking(String id, Booking data) {
-    throw UnimplementedError();
+  Future<Booking> updateBooking(String id, Booking data) async{
+   int index = book.indexWhere((book) => book.getId() == id);
+    book[index] = data;
+    return (book[index]);
   }
 }

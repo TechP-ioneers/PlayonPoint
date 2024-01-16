@@ -3,7 +3,7 @@ import 'package:map_mvvm/view/view.dart';
 import 'package:sprint1/features/booking/booking_viewmodel.dart';
 
 class ViewBooking extends StatelessWidget {
-  const ViewBooking({super.key});
+  const ViewBooking({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -19,13 +19,32 @@ class ViewBooking extends StatelessWidget {
           itemBuilder: (context, index) {
             return Card(
               child: ListTile(
-                title: Text(viewmodel.bookList[index].id),
-                subtitle: Text(viewmodel.bookList[index].selectedActivity),
-                trailing: IconButton(
-                  onPressed: () {
-                    viewmodel.deleteBooking(viewmodel.bookList[index].id);
-                  },
-                  icon: const Icon(Icons.delete),
+                title: Text("Booking ID: ${viewmodel.bookList[index].id}"),
+                titleTextStyle: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                subtitle: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text("Selected Activity: ${viewmodel.bookList[index].selectedActivity}"),
+                    Text("Players Quantity: ${viewmodel.bookList[index].playerQuantity.toString()}"),
+                  ],
+                ),
+                contentPadding: const EdgeInsets.all(16), 
+                trailing: Row(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    IconButton(
+                      onPressed: () {
+                        viewmodel.updateBooking(viewmodel.bookList[index].id, viewmodel.bookList[index]);
+                      },
+                      icon: const Icon(Icons.edit),
+                    ),
+                    IconButton(
+                      onPressed: () {
+                        viewmodel.deleteBooking(viewmodel.bookList[index].id);
+                      },
+                      icon: const Icon(Icons.delete),
+                    ),
+                  ],
                 ),
               ),
             );
