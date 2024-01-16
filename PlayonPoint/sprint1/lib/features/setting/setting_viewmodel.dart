@@ -23,7 +23,7 @@ class SettingViewModel extends Viewmodel {
 
   User get user => _user;
 
-  void saveChanges(BuildContext context) {
+  void saveChanges(BuildContext context, Function(User) updateUserCallback) {
     final updatedUser = User(
       name: _user.getName(),
       email: emailController.text,
@@ -36,6 +36,7 @@ class SettingViewModel extends Viewmodel {
 
     updateUser(updatedUser);
     update();
+    updateUserCallback(updatedUser);
     Navigator.pop(context, updatedUser);
   }
 

@@ -6,7 +6,10 @@ import '../../services/booking/booking_service.dart';
 
 class BookingViewModel extends Viewmodel {
   final Booking _model = Booking();
-    final BookingService _bookingService = locator();
+  final BookingService _bookingService = locator();
+  List <Booking> _bookList = [];
+  List <Booking> get bookList => _bookList;
+  int get count => _bookList.length;
 
   String get selectedActivity => _model.selectedActivity;
   int get playerQuantity => _model.playerQuantity;
@@ -49,4 +52,34 @@ class BookingViewModel extends Viewmodel {
       ),
     );
   }
+
+  Future<void> getAllBooking() async {
+  final list = await _bookingService.getAllBooking();
+  _bookList = list;
+    update();
+  }
+
+  Future<void> deleteBooking(String id) async {
+    await _bookingService.deleteBooking(id);
+    _bookList.removeWhere((element) => element.getId() == id);
+    update();
+  }
+
+  @override
+  void init() {
+    getAllBooking();
+    super.init();
+  }
+
+  // Future<void> updateBooking(String id, Booking data) async {
+  //   await _bookingService.updateBooking(id, data);
+  //   int index = _bookList.indexWhere((element) => element.getId() == id);
+  //   _bookList[index] = data;
+  //   update();
+  // }
+
+  // Future<void> getBooking(String id) async {
+  //   await _bookingService.getBooking(id);
+  //   update();
+  // }
 }

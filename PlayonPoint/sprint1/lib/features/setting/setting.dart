@@ -7,10 +7,12 @@ import 'package:sprint1/models/user_model.dart';
 
 class Setting extends StatelessWidget {
   final User passUser;
+    final Function(User) updateUserCallback;
 
   const Setting({
     Key? key,
-    required this.passUser,
+    required this.passUser, 
+    required this.updateUserCallback,
   }) : super(key: key);
 
   @override
@@ -80,25 +82,43 @@ class Setting extends StatelessWidget {
                         ),
                         const SizedBox(height: 10),
                         buildTextField(
-                            Icons.email, 'Email', viewmodel.emailController),
-                        const SizedBox(height: 10),
-                        buildTextField(Icons.phone, 'Phone Number',
-                            viewmodel.phoneController),
+                          Icons.email,
+                          'Email',
+                          viewmodel.emailController,
+                          passUser.getEmail(),
+                        ),
                         const SizedBox(height: 10),
                         buildTextField(
-                            Icons.home, 'Address', viewmodel.addressController),
+                          Icons.phone,
+                          'Phone Number',
+                          viewmodel.phoneController,
+                          passUser.getPhone(),
+                        ),
                         const SizedBox(height: 10),
-                        buildTextField(Icons.person , 'Gender', viewmodel.genderController)
+                        buildTextField(
+                          Icons.home,
+                          'Address',
+                          viewmodel.addressController,
+                          passUser.getAddress(),
+                        ),
+                        const SizedBox(height: 10),
+                        buildTextField(
+                          Icons.person,
+                          'Gender',
+                          viewmodel.genderController,
+                          passUser.getGender(),
+                        )
                       ],
                     ),
                   ),
                   const SizedBox(height: 10),
                   ElevatedButton(
-                    onPressed: () => viewmodel.saveChanges(context),
+                    onPressed: () => viewmodel.saveChanges(context, updateUserCallback),
                     child: const Text('Save Changes'),
                   ),
                 ],
               ),
+              
             ),
           ),
         ),
@@ -106,8 +126,10 @@ class Setting extends StatelessWidget {
     );
   }
 
-  Widget buildTextField(
-      IconData icon, String label, TextEditingController value) {
+  Widget buildTextField(IconData icon, String label,
+      TextEditingController value, String originalValue) {
+    value.text = originalValue; // Set the original value to the controller
+
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
@@ -116,7 +138,6 @@ class Setting extends StatelessWidget {
           child: SizedBox(
             width: 250,
             child: TextField(
-              readOnly: true,
               controller: value,
               decoration: InputDecoration(
                 labelText: label,

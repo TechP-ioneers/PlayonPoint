@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:map_mvvm/view/view.dart';
+import 'package:sprint1/features/booking/booklist.dart';
 import '../booking/booking.dart';
 import 'home_viewmodel.dart';
 import '../login/login.dart';
@@ -66,6 +67,18 @@ class Home extends StatelessWidget {
                     MaterialPageRoute(
                       builder: (context) =>
                           const LoginView(),
+                    ),
+                  );
+                },
+              ),
+              ListTile(
+                title: const Text('View Booking'),
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) =>
+                          const ViewBooking(),
                     ),
                   );
                 },

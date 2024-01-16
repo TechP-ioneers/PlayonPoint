@@ -27,7 +27,8 @@ class Profile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ViewWrapper<ProfileViewModel>(builder: (context , viewmodel) =>  Scaffold(
+    return ViewWrapper<ProfileViewModel>(
+      builder: (context, viewmodel) => Scaffold(
         backgroundColor: const Color(0xFFb364f3),
         appBar: AppBar(
           backgroundColor: Colors.lightGreenAccent,
@@ -41,7 +42,10 @@ class Profile extends StatelessWidget {
                   context,
                   MaterialPageRoute(
                     builder: (context) => Setting(
-                      passUser: passUser,
+                        passUser: passUser,
+                        updateUserCallback: (user) {
+                          viewmodel.updateUser(user);
+                        },
                     ),
                   ),
                 );

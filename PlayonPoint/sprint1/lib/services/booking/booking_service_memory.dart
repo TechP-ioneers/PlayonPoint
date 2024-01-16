@@ -2,7 +2,23 @@ import 'package:sprint1/models/booking_model.dart';
 import 'package:sprint1/services/booking/booking_service.dart';
 
 class BookingServiceMemory extends BookingService {
-  final List<Booking> book = [];
+  final List<Booking> book = [
+    Booking(
+      id: '1',
+      selectedActivity: 'Badminton',
+      playerQuantity: 2,
+    ),
+    Booking(
+      id: '2',
+      selectedActivity: 'Tennis',
+      playerQuantity: 4,
+    ),
+    Booking(
+      id: '3',
+      selectedActivity: 'Squash',
+      playerQuantity: 3,
+    ),
+  ];
   @override
   Future<Booking> addBooking(Booking data) async {
     int index = book.length;

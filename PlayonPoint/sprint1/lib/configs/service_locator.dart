@@ -24,6 +24,6 @@ void initilizeServiceLocator() {
       () => ProfileViewModel(passUser: User()));
   locator.registerFactory<SettingViewModel>(
       () => SettingViewModel(passUser: User()));
-      locator.registerFactory<BookingViewModel>(() => BookingViewModel());
-      locator.registerFactory<LoginViewModel>(() => LoginViewModel());
+  locator.registerFactory<BookingViewModel>(() => BookingViewModel());
+  locator.registerFactory<LoginViewModel>(() => LoginViewModel());
 }
