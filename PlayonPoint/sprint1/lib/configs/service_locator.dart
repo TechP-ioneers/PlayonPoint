@@ -3,6 +3,8 @@ import 'package:sprint1/features/booking/booking_viewmodel.dart';
 import 'package:sprint1/features/login/login_viewmodel.dart';
 import 'package:sprint1/features/setting/setting_viewmodel.dart';
 import 'package:sprint1/models/user_model.dart';
+import 'package:sprint1/services/booking/booking_service.dart';
+import 'package:sprint1/services/booking/booking_service_memory.dart';
 import 'package:sprint1/services/news/news_service.dart';
 import 'package:sprint1/services/news/news_service_memory.dart';
 import '../features/profile/profile_viewmodel.dart';
@@ -15,6 +17,7 @@ final locator = ServiceLocator.locator;
 void initilizeServiceLocator() {
   locator.registerLazySingleton<UserService>(() => UserServiceMemory());
   locator.registerLazySingleton<NewsService>(() => NewsServiceMemory());
+  locator.registerLazySingleton<BookingService>(() => BookingServiceMemory());
 
   locator.registerFactory<HomeViewModel>(() => HomeViewModel(passUser: User()));
   locator.registerFactory<ProfileViewModel>(
