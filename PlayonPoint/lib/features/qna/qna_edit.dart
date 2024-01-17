@@ -28,8 +28,10 @@ class _QnaEditState extends State<QnaEdit> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Edit Note'),
+     backgroundColor: const Color(0xFFb364f3),
+          appBar: AppBar(
+            backgroundColor: Colors.lightGreenAccent,
+        title: const Text('Edit Qna'),
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
@@ -48,24 +50,26 @@ class _QnaEditState extends State<QnaEdit> {
               onChanged: (value) => widget.qna.answer = value,
             ),
             const SizedBox(height: 16.0),
-            Row(
+            Column(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 ElevatedButton(
                   onPressed: () {
-                    // Save the changes and pop the screen
                     _saveChanges();
                     Navigator.pop(context, widget.qna);
                   },
                   child: const Text('Save Changes'),
                 ),
+                const SizedBox(height: 10.0),
                 ElevatedButton(
                   onPressed: () {
-                    // Save the changes and pop the screen
                     _saveChanges();
                     Navigator.pop(context, null);
                   },
                   child: const Text('Cancel'),
                 ),
+                const SizedBox(height: 10.0),
                 ElevatedButton(
                   onPressed: () {
                     questionController.text = "";
@@ -82,31 +86,7 @@ class _QnaEditState extends State<QnaEdit> {
   }
 
   void _saveChanges() {
-    // Update the note with the changes
     widget.qna.question = questionController.text;
     widget.qna.answer = answerController.text;
-
-    // You may want to save the updated note to a database or perform any necessary actions here.
-  }
-}
-
-void main() {
-  runApp(const MyApp());
-}
-
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      home: QnaEdit(
-        qna: Qna(
-          id: "1",
-          question: "What is the price for badminton?",
-          answer: "RM 10 per hour",
-        ),
-      ),
-    );
-  }
+    }
 }
