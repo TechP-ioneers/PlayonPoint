@@ -3,6 +3,7 @@ import 'package:map_mvvm/view/view.dart';
 import 'qna_viewmodel.dart';
 
 class QnaPage extends StatelessWidget {
+
   const QnaPage({Key? key}) : super(key: key);
 
   @override
@@ -39,6 +40,8 @@ class QnaPage extends StatelessWidget {
               );
             },
           ),
+
+        
         );
       },
     );

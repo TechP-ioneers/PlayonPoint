@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:map_mvvm/view/view.dart';
 import 'package:sprint1/features/booking/admin_list.dart';
 import '../qna/qna_admin.dart';
+import '../contact/contact_admin.dart';
 import 'home_viewmodel.dart';
 import '../login/login.dart';
 
@@ -61,7 +62,18 @@ class HomeAdmin extends StatelessWidget {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => QnaPageAdmin(),
+                      builder: (context) => const QnaPageAdmin(),
+                    ),
+                  );
+                },
+              ),
+              ListTile(
+                title: const Text('Contact'),
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const ContactPageAdmin(),
                     ),
                   );
                 },

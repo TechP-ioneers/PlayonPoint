@@ -90,23 +90,3 @@ class _QnaEditState extends State<QnaEdit> {
   }
 }
 
-void main() {
-  runApp(const MyApp());
-}
-
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      home: QnaEdit(
-        qna: Qna(
-          id: "1",
-          question: "What is the price for badminton?",
-          answer: "RM 10 per hour",
-        ),
-      ),
-    );
-  }
-}

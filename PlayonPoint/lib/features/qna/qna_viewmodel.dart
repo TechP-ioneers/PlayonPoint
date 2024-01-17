@@ -31,4 +31,6 @@ class QnaViewModel extends Viewmodel {
     _qnaList[index] = updated;
     update();
   }
+  
+
 }
