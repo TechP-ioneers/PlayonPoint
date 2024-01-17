@@ -16,7 +16,10 @@ class BookingViewModel extends Viewmodel {
   String get selectedTimeSlot => _model.selectedTimeSlot;
 
   Future<void> submitBooking(BuildContext context) async {
+    int result = _bookList.length + 1;
+    _model.id = result.toString();
     final booking = Booking(
+      id: _model.id,
       selectedActivity: _model.selectedActivity,
       playerQuantity: _model.playerQuantity,
       name: _model.name,
@@ -28,7 +31,7 @@ class BookingViewModel extends Viewmodel {
   }
 
   Future<void> setName(String name) async {
-    _model.name = name;
+   name = _model.name;
     update();
   }
 

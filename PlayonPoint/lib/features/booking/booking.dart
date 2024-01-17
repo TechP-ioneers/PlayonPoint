@@ -17,7 +17,6 @@ class BookingPage extends StatelessWidget {
           title: const Text('Sports Hall Booking'),
           backgroundColor: Colors.lightGreenAccent,
         ),
-
         body: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
@@ -131,10 +130,16 @@ class BookingPage extends StatelessWidget {
               onPressed: () {
                 viewmodel.setName(passUser.getName());
                 viewmodel.showSubmissionSuccessMessage(context);
+                // Navigator.pushReplacement(
+                //   context,
+                //   MaterialPageRoute(
+                //     builder: (context) => ViewBooking(passUser: passUser),
+                //   ),
+                // );
               },
               style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.white,
-                  ),
+                backgroundColor: Colors.white,
+              ),
               child: const Text('Done'),
             ),
           ],
