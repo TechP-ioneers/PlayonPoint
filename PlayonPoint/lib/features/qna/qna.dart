@@ -24,7 +24,10 @@ class QnaPage extends StatelessWidget {
                 child: ListTile(
                   title: Text("Question: ${viewmodel.qnaList[index].question}"),
                   titleTextStyle: const TextStyle(
-                      fontSize: 20, fontWeight: FontWeight.bold),
+                      color: Colors.black,
+                      fontSize: 20, 
+                      fontWeight: FontWeight.bold
+                      ),
                   subtitle: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [

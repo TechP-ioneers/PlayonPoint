@@ -5,8 +5,8 @@ import 'package:sprint1/services/qna/qna_service.dart';
 
 class QnaViewModel extends Viewmodel {
   final QnaService _qnaService = locator();
-  List <Qna> _qnaList = [];
-  List <Qna> get qnaList => _qnaList;
+  List<Qna> _qnaList = [];
+  List<Qna> get qnaList => _qnaList;
   int get count => _qnaList.length;
 
   Future<void> getAllQna() async {
@@ -26,8 +26,9 @@ class QnaViewModel extends Viewmodel {
   }
 
   Future<void> updateQna(String id, Qna qna) async {
-    await _qnaService.updateQna(id, qna);
+    Qna updated = await _qnaService.updateQna(id, qna);
+    int index = _qnaList.indexWhere((qna) => qna.id == id);
+    _qnaList[index] = updated;
     update();
   }
-
 }
