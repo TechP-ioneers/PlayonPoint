@@ -28,9 +28,27 @@ class QnaPageAdmin extends StatelessWidget {
                   subtitle: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text(
-                          "Answer: ${viewmodel.qnaList[index].answer}"),
-                     ],
+                      Text("Answer: ${viewmodel.qnaList[index].answer}"),
+                    ],
+                  ),
+                  contentPadding: const EdgeInsets.all(16),
+                  trailing: Row(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      IconButton(
+                        onPressed: () {
+                          viewmodel.updateQna(viewmodel.qnaList[index].id,
+                              viewmodel.qnaList[index]);
+                        },
+                        icon: const Icon(Icons.edit),
+                      ),
+                      IconButton(
+                        onPressed: () {
+                          viewmodel.deleteQna(viewmodel.qnaList[index].id);
+                        },
+                        icon: const Icon(Icons.delete),
+                      ),
+                    ],
                   ),
                 ),
               );
