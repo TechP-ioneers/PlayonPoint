@@ -1,18 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:map_mvvm/view/view.dart';
-import '../booking/list.dart';
-import '../booking/booking.dart';
+import 'package:sprint1/features/booking/admin_list.dart';
+import '../qna/qna_admin.dart';
 import 'home_viewmodel.dart';
 import '../login/login.dart';
-import '../profile/profile.dart';
-import '../../models/user_model.dart';
-import '../availability/availability.dart';
-import '../qna/qna.dart';
 
-class Home extends StatelessWidget {
-  final User passUser;
+class HomeAdmin extends StatelessWidget {
 
-  const Home({Key? key, required this.passUser}) : super(key: key);
+  const HomeAdmin({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -37,30 +32,6 @@ class Home extends StatelessWidget {
                 ),
               ),
               ListTile(
-                title: const Text('Profile'),
-                onTap: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => Profile(
-                        passUser: passUser,
-                      ),
-                    ),
-                  );
-                },
-              ),
-              ListTile(
-                title: const Text('Availability'),
-                onTap: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => AvailabilityState(),
-                    ),
-                  );
-                },
-              ),
-              ListTile(
                 title: const Text('Login'),
                 onTap: () {
                   Navigator.push(
@@ -79,7 +50,7 @@ class Home extends StatelessWidget {
                     context,
                     MaterialPageRoute(
                       builder: (context) =>
-                           ViewBooking(passUser: passUser),
+                           ViewBookingAdmin(),
                     ),
                   );
                 },
@@ -90,19 +61,7 @@ class Home extends StatelessWidget {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => QnaPage(),
-                    ),
-                  );
-                },
-              ),
-              ListTile(
-                title: const Text('Booking'),
-                onTap: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) =>
-                          BookingPage(),
+                      builder: (context) => QnaPageAdmin(),
                     ),
                   );
                 },
@@ -122,9 +81,9 @@ class Home extends StatelessWidget {
             child: Column(
               children: [
                 const SizedBox(height: 10),
-                Text(
-                  'Welcome, ${passUser.getName()}!',
-                  style: const TextStyle(
+                const Text(
+                  'Welcome, ADMIN!',
+                  style: TextStyle(
                     fontSize: 30,
                     fontWeight: FontWeight.bold,
                     fontStyle: FontStyle.italic,
@@ -176,10 +135,6 @@ class Home extends StatelessWidget {
                     ),
                   ),
                 ),
-                const SizedBox(height: 20),
-      
-                // Container for "Want to book?" and "Book Here"
-                viewmodel.buildBookingContainer(context),
       
                 const SizedBox(height: 20),
                 const SizedBox(

@@ -1,4 +1,3 @@
-import '../../models/user_model.dart';
 import '../../configs/service_locator.dart';
 import '../../models/booking_model.dart';
 import 'package:map_mvvm/view/viewmodel.dart';

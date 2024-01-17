@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:map_mvvm/view/view.dart';
 import '../home/home.dart';
+import '../home/home_admin.dart';
 import 'login_viewmodel.dart';
 import '../../models/user_model.dart';
 
@@ -36,11 +37,18 @@ class LoginView extends StatelessWidget {
               const SizedBox(height: 16.0),
               ElevatedButton(
                 onPressed: () async {
+                  if(viewmodel.usernameController.text == 'admin' && viewmodel.passwordController.text == 'admin'){
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => HomeAdmin(),
+                      ),
+                    );
+                  }else{
                   bool loginSuccess = await viewmodel.login();
       
                   if (loginSuccess) {
                     User loggedUser = await viewmodel.getUserData();
-                    // ignore: use_build_context_synchronously
                     Navigator.push(
                       context,
                       MaterialPageRoute(
@@ -48,13 +56,13 @@ class LoginView extends StatelessWidget {
                       ),
                     );
                   } else {
-                    // ignore: use_build_context_synchronously
                     ScaffoldMessenger.of(context).showSnackBar(
                       const SnackBar(
                         content: Text(
                             'Incorrect username or password. Please try again.'),
                       ),
                     );
+                  }
                   }
                 },
                 child: const Text('Login'),

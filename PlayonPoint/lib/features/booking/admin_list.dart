@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:map_mvvm/view/view.dart';
 import 'booking_viewmodel.dart';
-import '../../models/user_model.dart';
 
-class ViewBooking extends StatelessWidget {
-  final User passUser;
-  const ViewBooking({Key? key, required this.passUser}) : super(key: key);
+class ViewBookingAdmin extends StatelessWidget {
+  const ViewBookingAdmin({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -25,12 +23,15 @@ class ViewBooking extends StatelessWidget {
               return Card(
                 child: ListTile(
                   title: Text("Booking ID: ${viewmodel.bookList[index].id}"),
-                  titleTextStyle: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                  titleTextStyle: const TextStyle(
+                      fontSize: 20, fontWeight: FontWeight.bold),
                   subtitle: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text("Selected Activity: ${viewmodel.bookList[index].selectedActivity}"),
-                      Text("Players Quantity: ${viewmodel.bookList[index].playerQuantity.toString()}"),
+                      Text(
+                          "Selected Activity: ${viewmodel.bookList[index].selectedActivity}"),
+                      Text(
+                          "Players Quantity: ${viewmodel.bookList[index].playerQuantity.toString()}"),
                     ],
                   ),
                   contentPadding: const EdgeInsets.all(16),
@@ -39,7 +40,8 @@ class ViewBooking extends StatelessWidget {
                     children: [
                       IconButton(
                         onPressed: () {
-                          viewmodel.updateBooking(viewmodel.bookList[index].id, viewmodel.bookList[index]);
+                          viewmodel.updateBooking(viewmodel.bookList[index].id,
+                              viewmodel.bookList[index]);
                         },
                         icon: const Icon(Icons.edit),
                       ),
