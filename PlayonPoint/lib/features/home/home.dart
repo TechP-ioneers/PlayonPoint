@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:map_mvvm/view/view.dart';
+import 'package:sprint1/features/contact/contact.dart';
+import 'package:sprint1/models/contact_model.dart';
 import '../booking/list.dart';
 import '../booking/booking.dart';
 import 'home_viewmodel.dart';
@@ -16,7 +18,8 @@ class Home extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ViewWrapper<HomeViewModel>(builder: (context, viewmodel) => Scaffold(
+    return ViewWrapper<HomeViewModel>(
+      builder: (context, viewmodel) => Scaffold(
         appBar: AppBar(
           title: const Text('HomePage'),
           backgroundColor: const Color(0xFFb364f3),
@@ -66,8 +69,18 @@ class Home extends StatelessWidget {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) =>
-                          const LoginView(),
+                      builder: (context) => const LoginView(),
+                    ),
+                  );
+                },
+              ),
+              ListTile(
+                title: const Text('Contact'),
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const ContactPage(),
                     ),
                   );
                 },
@@ -78,8 +91,7 @@ class Home extends StatelessWidget {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) =>
-                           ViewBooking(passUser: passUser),
+                      builder: (context) => ViewBooking(passUser: passUser),
                     ),
                   );
                 },
@@ -101,8 +113,7 @@ class Home extends StatelessWidget {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) =>
-                          BookingPage(),
+                      builder: (context) => BookingPage(),
                     ),
                   );
                 },
@@ -177,19 +188,106 @@ class Home extends StatelessWidget {
                   ),
                 ),
                 const SizedBox(height: 20),
-      
-                // Container for "Want to book?" and "Book Here"
+
                 viewmodel.buildBookingContainer(context),
-      
+
                 const SizedBox(height: 20),
-                const SizedBox(
-                  width: 600,
-                  child: Column(
-                    children: [
-                      SizedBox(height: 10),
-                    ],
+
+                Container(
+                    width: 400,
+                    height: 100,
+                    decoration: const BoxDecoration(
+                      color: Colors.transparent,
+                      borderRadius: BorderRadius.all(Radius.circular(10)),
+                    ),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        viewmodel.buildCircularButton(
+                          icon: Icons.add,
+                          label: 'Booking',
+                          onPressed: () {
+                    
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => const BookingPage(
+                                
+                                ),
+                              ),
+                            );
+                          },
+                        ),
+                        viewmodel.buildCircularButton(
+                          icon: Icons.question_answer,
+                          label: 'Q&A',
+                          onPressed: () {
+       
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) =>
+                                    const QnaPage(),
+                              ),
+                            );
+                          },
+                        ),
+                      ],
+                    ),
                   ),
-                ),
+                  viewmodel.buildCircularButton(
+                          icon: Icons.contact_mail,
+                          label: 'Contact',
+                          onPressed: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => ContactPage(),
+                              ),
+                            );
+                          },
+                        ),
+                  Container(
+                    width: 400,
+                    height: 100,
+                    decoration: const BoxDecoration(
+                      color: Colors.transparent,
+                      borderRadius: BorderRadius.all(Radius.circular(10)),
+                    ),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        
+                       viewmodel.buildCircularButton(
+                          icon: Icons.person,
+                          label: 'Profile',
+                          onPressed: () {
+                            // Navigate to Profile
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) =>
+                                    Profile(passUser: User()),
+                              ),
+                            );
+                          },
+                        ),
+                        viewmodel.buildCircularButton(
+                          icon: Icons.book_rounded,
+                          label: 'Booking details',
+                          onPressed: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) =>
+                                    ViewBooking(passUser: User()),
+                              ),
+                            );
+                          },
+                        ),
+                      ],
+                    ),
+                  ),
               ],
             ),
           ),

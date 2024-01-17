@@ -168,7 +168,7 @@ GestureDetector buildBookHereContainer(BuildContext context) {
         width: 400,
         height: 120,
         decoration: const BoxDecoration(
-          color: Colors.black,
+          color: Color(0xFF444444),
           borderRadius: BorderRadius.all(Radius.circular(10)),
         ),
         child: Column(
@@ -215,6 +215,53 @@ GestureDetector buildBookHereContainer(BuildContext context) {
             ),
           ],
         ),
+      ),
+    );
+  }
+
+  Widget buildCircularButton({
+    required IconData icon,
+    required String label,
+    required VoidCallback onPressed,
+  }) {
+    return Container(
+      width: 80,
+      height: 120,
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Container(
+            width: 60,
+            height: 60,
+            decoration: BoxDecoration(
+              shape: BoxShape.circle,
+              gradient: LinearGradient(
+                begin: Alignment.topLeft,
+                end: Alignment.bottomRight,
+                colors: [Color(0xFFb364f3), Color(0xFFD6F454)],
+              ),
+              boxShadow: [
+                BoxShadow(
+                  color: Colors.black.withOpacity(0.3),
+                  spreadRadius: 2,
+                  blurRadius: 5,
+                  offset: Offset(0, 3),
+                ),
+              ],
+            ),
+            child: MaterialButton(
+              onPressed: onPressed,
+              shape: CircleBorder(),
+              padding: EdgeInsets.all(10),
+              child: Icon(icon, size: 30, color: Colors.white),
+            ),
+          ),
+          SizedBox(height: 5),
+          Text(
+            label,
+            style: TextStyle(fontSize: 10, color: Colors.black),
+          ),
+        ],
       ),
     );
   }

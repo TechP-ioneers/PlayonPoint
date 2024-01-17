@@ -88,5 +88,28 @@ class _QnaEditState extends State<QnaEdit> {
   void _saveChanges() {
     widget.qna.question = questionController.text;
     widget.qna.answer = answerController.text;
-    }
+
+    // You may want to save the updated note to a database or perform any necessary actions here.
+  }
+}
+
+void main() {
+  runApp(const MyApp());
+}
+
+class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      home: QnaEdit(
+        qna: Qna(
+          id: "1",
+          question: "What is the price for badminton?",
+          answer: "RM 10 per hour",
+        ),
+      ),
+    );
+  }
 }
