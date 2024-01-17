@@ -8,30 +8,35 @@ class BookingServiceMemory extends BookingService {
       name: 'John',
       selectedActivity: 'Badminton',
       playerQuantity: 2,
+      selectedTimeSlot: '9 AM - 10 AM',
     ),
     Booking(
       id: '2',
       name: 'Jane',
       selectedActivity: 'Ping Pong',
       playerQuantity: 4,
+      selectedTimeSlot: '11 AM - 12 PM',
     ),
     Booking(
       id: '3',
       name: 'John',
       selectedActivity: 'Squash',
       playerQuantity: 3,
+      selectedTimeSlot: '12 PM - 1 PM',
     ),
     Booking(
       id: '4',
       name: 'Jane',
       selectedActivity: 'Badminton',
       playerQuantity: 2,
+      selectedTimeSlot: '4 PM - 5 PM'
       ),
     Booking(
       id: '5',
       name: 'Jack',
       selectedActivity: 'Ping Pong',
       playerQuantity: 4,
+      selectedTimeSlot: '5 PM - 6 PM',
     ),
   ];
 
