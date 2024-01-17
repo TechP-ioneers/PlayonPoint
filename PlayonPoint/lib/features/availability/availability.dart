@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
 import '../../../features/availability/availability_viewmodel.dart';
 
+
 class AvailabilityState extends StatelessWidget {
   final AvailabilityViewModel viewModel = AvailabilityViewModel();
 
-  AvailabilityState({super.key});
+
+  AvailabilityState({Key? key});
+
 
   @override
   Widget build(BuildContext context) {
@@ -18,7 +21,7 @@ class AvailabilityState extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           const Text(
-            'Welcome User!',
+            'Court Availability',
             style: TextStyle(
               fontSize: 30,
               fontWeight: FontWeight.bold,
@@ -26,13 +29,15 @@ class AvailabilityState extends StatelessWidget {
             ),
           ),
           const SizedBox(height: 10),
-          viewModel.buildPingPongContainer(),
+          viewModel.TitleContainer(),
           const SizedBox(height: 10),
-          viewModel.buildTimeSlotsContainer((timeSlot) => viewModel.handleTimeSlotTap(timeSlot, context)),
+          viewModel.buildTimeSlotsContainer((timeSlot) =>
+              viewModel.handleTimeSlotTap(timeSlot, context)),
         ],
       ),
     );
   }
-
  
 }
+
+

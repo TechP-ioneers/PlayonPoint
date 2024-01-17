@@ -1,17 +1,37 @@
 import 'package:flutter/material.dart';
 import 'package:map_mvvm/view/view.dart';
+import 'package:sprint1/features/home/home.dart';
+import 'package:sprint1/models/user_model.dart';
 import '../availability/availability.dart';
 import 'booking_viewmodel.dart';
+
+
+
+
+
 
 class BookingPage extends StatelessWidget {
   const BookingPage({Key? key}) : super(key: key);
 
+
   @override
   Widget build(BuildContext context) {
-    return ViewWrapper<BookingViewModel>(builder: (context, viewmodel) => Scaffold(
+    return ViewWrapper<BookingViewModel>(
+      builder: (context, viewmodel) => Scaffold(
         backgroundColor: Colors.lightGreenAccent,
         appBar: AppBar(
           title: const Text('Sports Hall Booking'),
+          leading: IconButton(
+            icon: Icon(Icons.home),
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => Home(passUser: User()),
+                ),
+              );
+            },
+          ),
         ),
         body: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -54,7 +74,8 @@ class BookingPage extends StatelessWidget {
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Image.asset('images/badminton.png', width: 30, height: 30),
+                      Image.asset('images/badminton.png',
+                          width: 30, height: 30),
                       const SizedBox(height: 8),
                       const Text('Badminton'),
                     ],
@@ -117,7 +138,8 @@ class BookingPage extends StatelessWidget {
                   ),
                 );
               },
-              child: const Text('Show Court Availability'),
+              child: Text(
+                  'Show Court Availability: ${viewmodel.selectedTimeSlot}'), // Update this line
             ),
             const SizedBox(height: 20),
             ElevatedButton(

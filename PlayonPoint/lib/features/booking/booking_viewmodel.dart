@@ -13,6 +13,7 @@ class BookingViewModel extends Viewmodel {
 
   String get selectedActivity => _model.selectedActivity;
   int get playerQuantity => _model.playerQuantity;
+  String get selectedTimeSlot => _model.selectedTimeSlot;
 
   Future<void> submitBooking(BuildContext context) async {
     final booking = Booking(

@@ -10,6 +10,7 @@ class Booking {
     this.name = '',
     this.selectedActivity = '',
     this.playerQuantity = 1,
+    this.selectedTimeSlot = '',
   });
 
   String getId() => id;

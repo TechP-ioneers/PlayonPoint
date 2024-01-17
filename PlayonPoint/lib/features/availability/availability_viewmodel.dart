@@ -1,11 +1,28 @@
 import 'package:flutter/material.dart';
-import '../booking/booking.dart';
+import 'package:sprint1/features/booking/booking.dart';
 import 'package:map_mvvm/view/viewmodel.dart';
 
-class AvailabilityViewModel extends Viewmodel{
+
+class AvailabilityViewModel extends Viewmodel {
+  List<String> availableTimes = [
+    '8 AM - 9 AM',
+    '9 AM - 10 AM',
+    '10 AM - 11 AM',
+    '11 AM - 12 PM',
+    '12 PM - 1 PM',
+    '1 PM - 2 PM',
+    '2 PM - 3 PM',
+    '3 PM - 4 PM',
+    '4 PM - 5 PM',
+    '5 PM - 6 PM',
+    '6 PM - 7 PM',
+    '7 PM - 8 PM',
+    '8 PM - 9 PM',
+    '9 PM - 10 PM',
+  ];
 
 
-  Widget buildPingPongContainer() {
+  Widget TitleContainer() {
     return Center(
       child: Container(
         width: 300,
@@ -20,7 +37,7 @@ class AvailabilityViewModel extends Viewmodel{
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Text(
-                "Ping Pong",
+                "Please select the time slot",
                 style: TextStyle(
                   fontSize: 20,
                   fontWeight: FontWeight.bold,
@@ -33,57 +50,49 @@ class AvailabilityViewModel extends Viewmodel{
     );
   }
 
+
   Widget buildTimeSlotsContainer(Function(String) onTapCallback) {
-  return Container(
-    width: 400,
-    height: 400,
-    decoration: const BoxDecoration(
-      color: Colors.white,
-      borderRadius: BorderRadius.all(Radius.circular(10)),
-    ),
-    child: Padding(
-      padding: const EdgeInsets.all(16.0),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          const Text(
-            "Time",
-            style: TextStyle(
-              fontSize: 20,
-              fontWeight: FontWeight.bold,
-            ),
-          ),
-          const SizedBox(height: 10),
-          // Rows of time slots from 8 AM to 9 PM with increased spacing
-          for (int hour = 8; hour < 21; hour += 2)
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                buildTimeSlot(hour, hour + 1, onTapCallback),
-                const SizedBox(width: 40), // Increase spacing between time slots
-                buildTimeSlot(hour + 1, hour + 2, onTapCallback),
-              ],
-            ),
-        ],
+    return Container(
+      width: 400,
+      height: 400,
+      decoration: const BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.all(Radius.circular(10)),
       ),
-    ),
-  );
-}
+      child: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            const Text(
+              "Time",
+              style: TextStyle(
+                fontSize: 20,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+            const SizedBox(height: 10),
+            Wrap(
+              alignment: WrapAlignment.spaceBetween,
+              runSpacing: 10,
+              children: availableTimes.map((timeSlot) {
+                return GestureDetector(
+                  onTap: () {
+                    onTapCallback(timeSlot);
+                  },
+                  child: _buildTimeSlotContainer(timeSlot),
+                );
+              }).toList(),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
 
 
-  Widget buildTimeSlot(int startHour, int endHour, Function(String) onTapCallback) {
-  // Convert 0 to 12 for display
-  int displayStartHour = startHour % 12 == 0 ? 12 : startHour % 12;
-  int displayEndHour = endHour % 12 == 0 ? 12 : endHour % 12;
-
-  String timeSlot =
-      '$displayStartHour ${startHour < 12 ? 'AM' : 'PM'} - $displayEndHour ${endHour < 12 ? 'AM' : 'PM'}';
-
-  return GestureDetector(
-    onTap: () {
-      onTapCallback(timeSlot);
-    },
-    child: Container(
+  Widget _buildTimeSlotContainer(String timeSlot) {
+    return Container(
       width: 150,
       height: 30,
       decoration: const BoxDecoration(
@@ -99,11 +108,11 @@ class AvailabilityViewModel extends Viewmodel{
           ),
         ),
       ),
-    ),
-  );
-}
+    );
+  }
 
-   void handleTimeSlotTap(String timeSlot, BuildContext context) {
+
+  void handleTimeSlotTap(String timeSlot, BuildContext context) {
     Navigator.push(
       context,
       MaterialPageRoute(
