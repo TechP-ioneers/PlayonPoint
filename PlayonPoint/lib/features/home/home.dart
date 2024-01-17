@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:map_mvvm/view/view.dart';
 import 'package:sprint1/features/contact/contact.dart';
-import 'package:sprint1/models/contact_model.dart';
 import '../booking/list.dart';
 import '../booking/booking.dart';
 import 'home_viewmodel.dart';
@@ -21,7 +20,7 @@ class Home extends StatelessWidget {
     return ViewWrapper<HomeViewModel>(
       builder: (context, viewmodel) => Scaffold(
         appBar: AppBar(
-          title: const Text('HomePage'),
+          title: const Text('Home Page'),
           backgroundColor: const Color(0xFFb364f3),
           elevation: 0,
         ),
@@ -113,7 +112,8 @@ class Home extends StatelessWidget {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => BookingPage(),
+                      builder: (context) =>
+                          BookingPage(passUser: passUser,),
                     ),
                   );
                 },
@@ -211,9 +211,7 @@ class Home extends StatelessWidget {
                             Navigator.push(
                               context,
                               MaterialPageRoute(
-                                builder: (context) => const BookingPage(
-                                
-                                ),
+                                builder: (context) =>  BookingPage(passUser: passUser),
                               ),
                             );
                           },

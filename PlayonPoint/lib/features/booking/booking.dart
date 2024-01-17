@@ -1,18 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:map_mvvm/view/view.dart';
-import 'package:sprint1/features/home/home.dart';
 import 'package:sprint1/models/user_model.dart';
 import '../availability/availability.dart';
 import 'booking_viewmodel.dart';
 
-
-
-
-
-
 class BookingPage extends StatelessWidget {
-  const BookingPage({Key? key}) : super(key: key);
-
+  final User passUser;
+  const BookingPage({Key? key, required this.passUser}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -21,18 +15,9 @@ class BookingPage extends StatelessWidget {
         backgroundColor: Colors.lightGreenAccent,
         appBar: AppBar(
           title: const Text('Sports Hall Booking'),
-          leading: IconButton(
-            icon: Icon(Icons.home),
-            onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => Home(passUser: User()),
-                ),
-              );
-            },
-          ),
+          backgroundColor: Colors.lightGreenAccent,
         ),
+
         body: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
@@ -144,10 +129,11 @@ class BookingPage extends StatelessWidget {
             const SizedBox(height: 20),
             ElevatedButton(
               onPressed: () {
+                viewmodel.setName(passUser.getName());
                 viewmodel.showSubmissionSuccessMessage(context);
               },
               style: ElevatedButton.styleFrom(
-                  // backgroundColor: Colors.white,
+                  backgroundColor: Colors.white,
                   ),
               child: const Text('Done'),
             ),
