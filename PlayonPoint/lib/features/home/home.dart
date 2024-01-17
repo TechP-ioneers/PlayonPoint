@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:map_mvvm/view/view.dart';
-import '../booking/booklist.dart';
+import '../booking/list.dart.dart';
 import '../booking/booking.dart';
 import 'home_viewmodel.dart';
 import '../login/login.dart';
 import '../profile/profile.dart';
 import '../../models/user_model.dart';
 import '../availability/availability.dart';
+import '../qna/qna.dart';
 
 class Home extends StatelessWidget {
   final User passUser;
@@ -79,6 +80,17 @@ class Home extends StatelessWidget {
                     MaterialPageRoute(
                       builder: (context) =>
                            ViewBooking(passUser: passUser),
+                    ),
+                  );
+                },
+              ),
+              ListTile(
+                title: const Text('Qna'),
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => QnaPage(),
                     ),
                   );
                 },
