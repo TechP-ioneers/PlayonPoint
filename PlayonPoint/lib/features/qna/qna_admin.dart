@@ -1,9 +1,25 @@
 import 'package:flutter/material.dart';
 import 'package:map_mvvm/view/view.dart';
+import '../../models/qna_model.dart';
+import 'qna_edit.dart';
 import 'qna_viewmodel.dart';
 
 class QnaPageAdmin extends StatelessWidget {
   const QnaPageAdmin({Key? key}) : super(key: key);
+
+  Future<void> _editQna(
+      QnaViewModel viewmodel, Qna qna, BuildContext context) async {
+    Qna? result = await Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => QnaEdit(qna: qna),
+      ),
+    );
+    if (result == null) return;
+
+    // foward the process to viewmodel
+    viewmodel.updateQna(qna.id, result);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -24,7 +40,10 @@ class QnaPageAdmin extends StatelessWidget {
                 child: ListTile(
                   title: Text("Question: ${viewmodel.qnaList[index].question}"),
                   titleTextStyle: const TextStyle(
-                      fontSize: 20, fontWeight: FontWeight.bold),
+                    color: Colors.black,
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold,
+                  ),
                   subtitle: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
@@ -32,27 +51,36 @@ class QnaPageAdmin extends StatelessWidget {
                     ],
                   ),
                   contentPadding: const EdgeInsets.all(16),
-                  trailing: Row(
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      IconButton(
-                        onPressed: () {
-                          viewmodel.updateQna(viewmodel.qnaList[index].id,
-                              viewmodel.qnaList[index]);
-                        },
-                        icon: const Icon(Icons.edit),
-                      ),
-                      IconButton(
-                        onPressed: () {
-                          viewmodel.deleteQna(viewmodel.qnaList[index].id);
-                        },
-                        icon: const Icon(Icons.delete),
-                      ),
-                    ],
+                  trailing: Container(
+                    width: 80, // Specify a fixed width for the Container
+                    child: Row(
+                      children: [
+                        IconButton(
+                          onPressed: () {
+                            _editQna(
+                                viewmodel, viewmodel.qnaList[index], context);
+                          },
+                          icon: const Icon(Icons.edit),
+                        ),
+                        IconButton(
+                          onPressed: () {
+                            viewmodel.deleteQna(viewmodel.qnaList[index].id);
+                          },
+                          icon: const Icon(Icons.delete),
+                        ),
+                      ],
+                    ),
                   ),
                 ),
               );
             },
+          ),
+          floatingActionButton: FloatingActionButton(
+            tooltip: 'Add a new note',
+            onPressed: () {
+              viewmodel.addQna(Qna(question: 'Question', answer: 'Answer'));
+            },
+            child: const Icon(Icons.add),
           ),
         );
       },

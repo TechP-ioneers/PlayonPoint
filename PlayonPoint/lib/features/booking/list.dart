@@ -25,7 +25,11 @@ class ViewBooking extends StatelessWidget {
               return Card(
                 child: ListTile(
                   title: Text("Booking ID: ${viewmodel.bookList[index].id}"),
-                  titleTextStyle: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                  titleTextStyle: const TextStyle(
+                      color: Colors.black,
+                      fontSize: 20, 
+                      fontWeight: FontWeight.bold
+                      ),
                   subtitle: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
