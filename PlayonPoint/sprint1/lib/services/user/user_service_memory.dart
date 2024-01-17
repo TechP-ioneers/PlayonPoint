@@ -61,7 +61,10 @@ Future<User> fetchUserData(String email, String password) {
       return Future.value(user);
     }
   }
+<<<<<<< Updated upstream
   return Future.value(User());
 }
+=======
+>>>>>>> Stashed changes
 
 }
