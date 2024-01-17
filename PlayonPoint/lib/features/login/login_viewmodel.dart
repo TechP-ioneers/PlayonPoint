@@ -1,4 +1,4 @@
-//login_viewmodel.dart
+// login_viewmodel.dart
 import 'package:flutter/material.dart';
 import 'package:map_mvvm/view/viewmodel.dart';
 import '../../configs/service_locator.dart';
@@ -7,10 +7,18 @@ import '../../services/user/user_service.dart';
 
 class LoginViewModel extends Viewmodel {
   final UserService _userService = locator();
-  TextEditingController usernameController = TextEditingController();
-  TextEditingController passwordController = TextEditingController();
+  final List<User> _userList = [];
+  List<User> get userList => _userList;
+  int get count => _userList.length;
 
-  LoginViewModel();
+  final usernameController = TextEditingController();
+  final passwordController = TextEditingController();
+  final idController = TextEditingController();
+  final emailController = TextEditingController();
+  final confirmPwdController = TextEditingController();
+  final phoneController = TextEditingController();
+  final addressController = TextEditingController();
+  final genderController = TextEditingController();
 
   Future<bool> login() async {
     String username = usernameController.text;
@@ -29,9 +37,35 @@ class LoginViewModel extends Viewmodel {
     }
   }
 
+  Future<bool> register(BuildContext context) async {
+    if (passwordController.text != confirmPwdController.text) {
+      print("Passwords do not match!");
+      return false;
+    }
+
+    User newUser = User(
+      name: usernameController.text,
+      password: passwordController.text,
+      userId: idController.text,
+      email: emailController.text,
+      phone: phoneController.text,
+      address: addressController.text,
+      gender: genderController.text,
+    );
+
+    await _userService.addUser(newUser);
+    update();
+
+    ScaffoldMessenger.of(context).showSnackBar(
+      const SnackBar(
+        content: Text('Successfully registered!'),
+      ),
+    );
+    return true;
+  }
+
   Future<User> getUserData() async {
     String username = usernameController.text;
     return await _userService.getUser(username);
-    //return await _userService.getUserData(id, data);
   }
 }

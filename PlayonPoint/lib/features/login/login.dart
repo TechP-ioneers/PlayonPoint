@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:map_mvvm/view/view.dart';
+import 'package:sprint1/features/login/register.dart';
 import '../home/home.dart';
 import '../home/home_admin.dart';
 import 'login_viewmodel.dart';
@@ -12,9 +13,10 @@ class LoginView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ViewWrapper<LoginViewModel>(builder: (context, viewmodel) => Scaffold(
+    return ViewWrapper<LoginViewModel>(builder: (context, viewmodel) => 
+    Scaffold(
         appBar: AppBar(
-          title: const Text('Login Page'),
+          title: const Text('Register Page'),
         ),
         body: Padding(
           padding: const EdgeInsets.all(16.0),
@@ -66,6 +68,26 @@ class LoginView extends StatelessWidget {
                   }
                 },
                 child: const Text('Login'),
+              ),
+              const SizedBox(height: 10.0),
+              const Text(
+                'Don\'t have an account?',
+                style: TextStyle(
+                  fontSize: 15,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.black,
+                ),
+              ),
+              const SizedBox(height: 10.0),
+              ElevatedButton(
+                onPressed: () {
+                  Navigator.push( context,
+                      MaterialPageRoute(
+                        builder: (context) => Register(),
+                      ),
+                  );
+                },
+                child: const Text('Register'),
               ),
             ],
           ),

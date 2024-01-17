@@ -6,7 +6,6 @@ class User {
   String address;
   String gender;
   String userId;
-  late String profilePictureUrl;
 
   User({
     this.name = " ",
@@ -16,7 +15,6 @@ class User {
     this.address = " ",
     this.userId = " ",
     this.gender = " ",
-    this.profilePictureUrl = " ",
   });
 
   // Getters
@@ -27,7 +25,6 @@ class User {
   String getAddress() => address;
   String getGender() => gender;
   String getId() => userId;
-  String getProfilePictureUrl() => profilePictureUrl;
 
   // Setters
   set setName(String name) => this.name = name;
