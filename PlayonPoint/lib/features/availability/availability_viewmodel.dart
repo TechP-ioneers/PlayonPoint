@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:sprint1/features/booking/booking.dart';
+import '../booking/booking.dart';
 import 'package:map_mvvm/view/viewmodel.dart';
 
 class AvailabilityViewModel extends Viewmodel{

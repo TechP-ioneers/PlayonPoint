@@ -1,5 +1,6 @@
-import 'package:sprint1/configs/service_locator.dart';
-import 'package:sprint1/models/booking_model.dart';
+import '../../models/user_model.dart';
+import '../../configs/service_locator.dart';
+import '../../models/booking_model.dart';
 import 'package:map_mvvm/view/viewmodel.dart';
 import 'package:flutter/material.dart';
 import '../../services/booking/booking_service.dart';
@@ -58,6 +59,14 @@ class BookingViewModel extends Viewmodel {
   _bookList = list;
     update();
   }
+
+  Future<void> getUserBooking(String name) async {
+  final list = await _bookingService.getUserBooking(name);
+  _bookList = list;
+    update();
+  }
+
+
 
   Future<void> deleteBooking(String id) async {
     await _bookingService.deleteBooking(id);

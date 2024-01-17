@@ -1,9 +1,9 @@
 //login_viewmodel.dart
 import 'package:flutter/material.dart';
 import 'package:map_mvvm/view/viewmodel.dart';
-import 'package:sprint1/configs/service_locator.dart';
-import 'package:sprint1/models/user_model.dart';
-import 'package:sprint1/services/user/user_service.dart';
+import '../../configs/service_locator.dart';
+import '../../models/user_model.dart';
+import '../../services/user/user_service.dart';
 
 class LoginViewModel extends Viewmodel {
   final UserService _userService = locator();

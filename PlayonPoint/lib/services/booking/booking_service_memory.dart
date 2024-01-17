@@ -5,30 +5,36 @@ class BookingServiceMemory extends BookingService {
   final List<Booking> book = [
     Booking(
       id: '1',
+      name: 'John',
       selectedActivity: 'Badminton',
       playerQuantity: 2,
     ),
     Booking(
       id: '2',
+      name: 'Jane',
       selectedActivity: 'Ping Pong',
       playerQuantity: 4,
     ),
     Booking(
       id: '3',
+      name: 'John',
       selectedActivity: 'Squash',
       playerQuantity: 3,
     ),
     Booking(
       id: '4',
+      name: 'Jane',
       selectedActivity: 'Badminton',
       playerQuantity: 2,
       ),
     Booking(
       id: '5',
+      name: 'Jack',
       selectedActivity: 'Ping Pong',
       playerQuantity: 4,
     ),
   ];
+
   @override
   Future<Booking> addBooking(Booking data) async {
     int index = book.length;
@@ -60,5 +66,10 @@ class BookingServiceMemory extends BookingService {
    int index = book.indexWhere((book) => book.getId() == id);
     book[index] = data;
     return (book[index]);
+  }
+  
+  @override
+  Future<List<Booking>> getUserBooking(String name) async{
+    return book.where((book) => book.name == name).toList();
   }
 }
