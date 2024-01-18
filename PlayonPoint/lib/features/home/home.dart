@@ -265,7 +265,7 @@ class Home extends StatelessWidget {
                               context,
                               MaterialPageRoute(
                                 builder: (context) =>
-                                    Profile(passUser: User()),
+                                    Profile(passUser: passUser),
                               ),
                             );
                           },
@@ -278,7 +278,7 @@ class Home extends StatelessWidget {
                               context,
                               MaterialPageRoute(
                                 builder: (context) =>
-                                    ViewBooking(passUser: User()),
+                                    ViewBooking(passUser: passUser),
                               ),
                             );
                           },
