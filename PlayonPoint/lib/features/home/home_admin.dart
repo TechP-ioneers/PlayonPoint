@@ -149,14 +149,59 @@ class HomeAdmin extends StatelessWidget {
                 ),
       
                 const SizedBox(height: 20),
-                const SizedBox(
-                  width: 600,
-                  child: Column(
-                    children: [
-                      SizedBox(height: 10),
-                    ],
+                  
+                  Container(
+                    width: 400,
+                    height: 100,
+                    decoration: const BoxDecoration(
+                      color: Colors.transparent,
+                      borderRadius: BorderRadius.all(Radius.circular(10)),
+                    ),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        viewmodel.buildCircularButton(
+                          icon: Icons.question_answer,
+                          label: 'Q&A',
+                          onPressed: () {
+       
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) =>
+                                    const QnaPageAdmin(),
+                              ),
+                            );
+                          },
+                        ),
+                        viewmodel.buildCircularButton(
+                          icon: Icons.contact_mail,
+                          label: 'Contact',
+                          onPressed: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) =>const ContactPageAdmin(),
+                              ),
+                            );
+                          },
+                        ),
+                        viewmodel.buildCircularButton(
+                          icon: Icons.book_rounded,
+                          label: 'Booking details',
+                          onPressed: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) =>
+                                   const ViewBookingAdmin(),
+                              ),
+                            );
+                          },
+                        ),
+                      ],
+                    ),
                   ),
-                ),
               ],
             ),
           ),
