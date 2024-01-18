@@ -8,10 +8,7 @@ class ContactPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ViewWrapper<ContactViewModel>(
-      builder: (context, viewmodel) {
-        viewmodel.getAllContact();
-
-        return Scaffold(
+      builder: (context, viewmodel)  => Scaffold(
           backgroundColor: const Color(0xFFb364f3),
           appBar: AppBar(
             backgroundColor: Colors.lightGreenAccent,
@@ -39,8 +36,7 @@ class ContactPage extends StatelessWidget {
               );
             },
           ),
-        );
-      },
+        ),
     );
   }
 }

@@ -30,4 +30,9 @@ class ContactViewModel extends Viewmodel {
     update();
   }
 
+    @override
+  void init() {
+    getAllContact();
+    super.init();
+  }
 }

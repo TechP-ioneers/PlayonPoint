@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:map_mvvm/view/view.dart';
-import 'package:sprint1/models/booking_model.dart';
 import 'package:sprint1/models/user_model.dart';
 import '../availability/availability.dart';
 import 'booking_viewmodel.dart';
