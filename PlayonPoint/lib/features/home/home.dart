@@ -123,172 +123,174 @@ class Home extends StatelessWidget {
             ],
           ),
         ),
-        body: Container(
-          decoration: const BoxDecoration(
-            gradient: LinearGradient(
-              begin: Alignment.topLeft,
-              end: Alignment.bottomRight,
-              colors: [Color(0xFFb364f3), Color(0xFFD6F454)],
+        body: SingleChildScrollView(
+          child: Container(
+            decoration: const BoxDecoration(
+              gradient: LinearGradient(
+                begin: Alignment.topLeft,
+                end: Alignment.bottomRight,
+                colors: [Color(0xFFb364f3), Color(0xFFD6F454)],
+              ),
             ),
-          ),
-          child: Center(
-            child: Column(
-              children: [
-                const SizedBox(height: 10),
-                Text(
-                  'Welcome, ${passUser.getName()}!',
-                  style: const TextStyle(
-                    fontSize: 30,
-                    fontWeight: FontWeight.bold,
-                    fontStyle: FontStyle.italic,
-                    color: Colors.white,
-                  ),
-                ),
-                const SizedBox(height: 10),
-                Container(
-                  width: 400,
-                  height: 200,
-                  decoration: const BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.all(Radius.circular(10)),
-                  ),
-                  child: const Padding(
-                    padding: EdgeInsets.all(16.0),
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Text(
-                          "Today's News!",
-                          style: TextStyle(
-                            fontSize: 20,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                        SizedBox(height: 10),
-                        Text(
-                          'Sports Hall Repair News Report',
-                          style: TextStyle(
-                            fontSize: 18,
-                            fontWeight: FontWeight.bold,
-                            decoration: TextDecoration.underline,
-                          ),
-                        ),
-                        SizedBox(height: 10),
-                        Expanded(
-                          child: SingleChildScrollView(
-                            child: Text(
-                              'We would like to inform you that the sports hall is currently undergoing essential repairs and maintenance. This initiative is part of our ongoing efforts to enhance the overall facility and ensure a safe and enjoyable environment for everyone.',
-                              style: TextStyle(
-                                fontSize: 15,
-                              ),
-                              textAlign: TextAlign.center,
-                            ),
-                          ),
-                        ),
-                      ],
+            child: Center(
+              child: Column(
+                children: [
+                  const SizedBox(height: 10),
+                  Text(
+                    'Welcome, ${passUser.getName()}!',
+                    style: const TextStyle(
+                      fontSize: 30,
+                      fontWeight: FontWeight.bold,
+                      fontStyle: FontStyle.italic,
+                      color: Colors.white,
                     ),
                   ),
-                ),
-                const SizedBox(height: 20),
-
-                viewmodel.buildBookingContainer(context),
-
-                const SizedBox(height: 20),
-
-                Container(
-                    width: 400,
-                    height: 100,
-                    decoration: const BoxDecoration(
-                      color: Colors.transparent,
-                      borderRadius: BorderRadius.all(Radius.circular(10)),
-                    ),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: [
-                        viewmodel.buildCircularButton(
-                          icon: Icons.add,
-                          label: 'Booking',
-                          onPressed: () {
-                    
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) =>  BookingPage(passUser: passUser, selectedTimeSlot: 'timeslot',),
-                              ),
-                            );
-                          },
-                        ),
-                        viewmodel.buildCircularButton(
-                          icon: Icons.question_answer,
-                          label: 'Q&A',
-                          onPressed: () {
-       
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) =>
-                                    const QnaPage(),
-                              ),
-                            );
-                          },
-                        ),
-                      ],
-                    ),
-                  ),
-                  viewmodel.buildCircularButton(
-                          icon: Icons.contact_mail,
-                          label: 'Contact',
-                          onPressed: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) => ContactPage(),
-                              ),
-                            );
-                          },
-                        ),
+                  const SizedBox(height: 10),
                   Container(
                     width: 400,
-                    height: 100,
+                    height: 200,
                     decoration: const BoxDecoration(
-                      color: Colors.transparent,
+                      color: Colors.white,
                       borderRadius: BorderRadius.all(Radius.circular(10)),
                     ),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: [
-                        
-                       viewmodel.buildCircularButton(
-                          icon: Icons.person,
-                          label: 'Profile',
-                          onPressed: () {
-                            // Navigate to Profile
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) =>
-                                    Profile(passUser: passUser),
+                    child: const Padding(
+                      padding: EdgeInsets.all(16.0),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text(
+                            "Today's News!",
+                            style: TextStyle(
+                              fontSize: 20,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                          SizedBox(height: 10),
+                          Text(
+                            'Sports Hall Repair News Report',
+                            style: TextStyle(
+                              fontSize: 18,
+                              fontWeight: FontWeight.bold,
+                              decoration: TextDecoration.underline,
+                            ),
+                          ),
+                          SizedBox(height: 10),
+                          Expanded(
+                            child: SingleChildScrollView(
+                              child: Text(
+                                'We would like to inform you that the sports hall is currently undergoing essential repairs and maintenance. This initiative is part of our ongoing efforts to enhance the overall facility and ensure a safe and enjoyable environment for everyone.',
+                                style: TextStyle(
+                                  fontSize: 15,
+                                ),
+                                textAlign: TextAlign.center,
                               ),
-                            );
-                          },
-                        ),
-                        viewmodel.buildCircularButton(
-                          icon: Icons.book_rounded,
-                          label: 'Booking details',
-                          onPressed: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) =>
-                                    ViewBooking(passUser: passUser),
-                              ),
-                            );
-                          },
-                        ),
-                      ],
+                            ),
+                          ),
+                        ],
+                      ),
                     ),
                   ),
-              ],
+                  const SizedBox(height: 20),
+          
+                  viewmodel.buildBookingContainer(context),
+          
+                  const SizedBox(height: 20),
+          
+                  Container(
+                      width: 400,
+                      height: 100,
+                      decoration: const BoxDecoration(
+                        color: Colors.transparent,
+                        borderRadius: BorderRadius.all(Radius.circular(10)),
+                      ),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: [
+                          viewmodel.buildCircularButton(
+                            icon: Icons.add,
+                            label: 'Booking',
+                            onPressed: () {
+                      
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) =>  BookingPage(passUser: passUser, selectedTimeSlot: 'timeslot',),
+                                ),
+                              );
+                            },
+                          ),
+                          viewmodel.buildCircularButton(
+                            icon: Icons.question_answer,
+                            label: 'Q&A',
+                            onPressed: () {
+                 
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) =>
+                                      const QnaPage(),
+                                ),
+                              );
+                            },
+                          ),
+                        ],
+                      ),
+                    ),
+                    viewmodel.buildCircularButton(
+                            icon: Icons.contact_mail,
+                            label: 'Contact',
+                            onPressed: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => ContactPage(),
+                                ),
+                              );
+                            },
+                          ),
+                    Container(
+                      width: 400,
+                      height: 100,
+                      decoration: const BoxDecoration(
+                        color: Colors.transparent,
+                        borderRadius: BorderRadius.all(Radius.circular(10)),
+                      ),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: [
+                          
+                         viewmodel.buildCircularButton(
+                            icon: Icons.person,
+                            label: 'Profile',
+                            onPressed: () {
+                              // Navigate to Profile
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) =>
+                                      Profile(passUser: passUser),
+                                ),
+                              );
+                            },
+                          ),
+                          viewmodel.buildCircularButton(
+                            icon: Icons.book_rounded,
+                            label: 'Booking details',
+                            onPressed: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) =>
+                                      ViewBooking(passUser: passUser),
+                                ),
+                              );
+                            },
+                          ),
+                        ],
+                      ),
+                    ),
+                ],
+              ),
             ),
           ),
         ),

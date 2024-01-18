@@ -9,10 +9,7 @@ class QnaPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ViewWrapper<QnaViewModel>(
-      builder: (context, viewmodel) {
-        viewmodel.getAllQna();
-
-        return Scaffold(
+      builder: (context, viewmodel) => Scaffold(
           backgroundColor: const Color(0xFFb364f3),
           appBar: AppBar(
             backgroundColor: Colors.lightGreenAccent,
@@ -42,8 +39,7 @@ class QnaPage extends StatelessWidget {
           ),
 
         
-        );
-      },
+        ),
     );
   }
 }
