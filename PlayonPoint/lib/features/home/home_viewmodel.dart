@@ -135,7 +135,7 @@ GestureDetector buildBookHereContainer(BuildContext context) {
        Navigator.push(
                   context,
                   MaterialPageRoute(
-                        builder: (context) => BookingPage(passUser: _user,),
+                        builder: (context) => BookingPage(passUser: _user,selectedTimeSlot: 'timeslot',),
 
                   ),
                 );
@@ -190,7 +190,7 @@ GestureDetector buildBookHereContainer(BuildContext context) {
                   context,
                   MaterialPageRoute(
                     builder: (context) =>
-                        BookingPage(passUser: _user,),
+                        BookingPage(passUser: _user, selectedTimeSlot: 'timeslot',),
                   ),
                 );
               },

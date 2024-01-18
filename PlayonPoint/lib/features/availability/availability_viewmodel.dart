@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:sprint1/features/booking/booking.dart';
 import 'package:map_mvvm/view/viewmodel.dart';
-
+import '../../models/booking_model.dart';
 import '../../models/user_model.dart';
 
 class AvailabilityViewModel extends Viewmodel {
   late User passUser;
+  late String selectedTimeSlot;
+  AvailabilityViewModel({required this.passUser});
+
   List<String> availableTimes = [
     '8 AM - 9 AM',
     '9 AM - 10 AM',
@@ -22,6 +25,8 @@ class AvailabilityViewModel extends Viewmodel {
     '8 PM - 9 PM',
     '9 PM - 10 PM',
   ];
+
+
 
   Widget TitleContainer() {
     return Center(
@@ -110,12 +115,14 @@ class AvailabilityViewModel extends Viewmodel {
     );
   }
 
-  void handleTimeSlotTap(String timeSlot, BuildContext context) {
+ void handleTimeSlotTap(String timeSlot, BuildContext context) {
+    selectedTimeSlot = timeSlot; // Update the selectedTimeSlot
     Navigator.push(
       context,
       MaterialPageRoute(
         builder: (context) => BookingPage(
           passUser: passUser,
+          selectedTimeSlot: selectedTimeSlot, // Pass selectedTimeSlot to BookingPage
         ),
       ),
     );

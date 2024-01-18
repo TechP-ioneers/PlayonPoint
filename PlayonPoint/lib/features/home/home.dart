@@ -113,7 +113,7 @@ class Home extends StatelessWidget {
                     context,
                     MaterialPageRoute(
                       builder: (context) =>
-                          BookingPage(passUser: passUser,),
+                          BookingPage(passUser: passUser,selectedTimeSlot: 'timeslot',),
                     ),
                   );
                 },
@@ -211,7 +211,7 @@ class Home extends StatelessWidget {
                             Navigator.push(
                               context,
                               MaterialPageRoute(
-                                builder: (context) =>  BookingPage(passUser: passUser),
+                                builder: (context) =>  BookingPage(passUser: passUser, selectedTimeSlot: 'timeslot',),
                               ),
                             );
                           },

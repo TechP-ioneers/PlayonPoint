@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:map_mvvm/view/view.dart';
+import 'package:sprint1/models/booking_model.dart';
 import 'package:sprint1/models/user_model.dart';
 import '../availability/availability.dart';
 import 'booking_viewmodel.dart';
 
 class BookingPage extends StatelessWidget {
   final User passUser;
-  const BookingPage({Key? key, required this.passUser}) : super(key: key);
+  final String selectedTimeSlot;
+  const BookingPage({Key? key, required this.passUser,required this.selectedTimeSlot}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -123,7 +125,7 @@ class BookingPage extends StatelessWidget {
                 );
               },
               child: Text(
-                  'Show Court Availability: ${viewmodel.selectedTimeSlot}'), // Update this line
+                  'Show Court Availability: ${selectedTimeSlot}'), // Update this line
             ),
             const SizedBox(height: 20),
             ElevatedButton(
