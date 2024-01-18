@@ -63,34 +63,12 @@ class Home extends StatelessWidget {
                 },
               ),
               ListTile(
-                title: const Text('Login'),
-                onTap: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => const LoginView(),
-                    ),
-                  );
-                },
-              ),
-              ListTile(
                 title: const Text('Contact'),
                 onTap: () {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
                       builder: (context) => const ContactPage(),
-                    ),
-                  );
-                },
-              ),
-              ListTile(
-                title: const Text('View Booking'),
-                onTap: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => ViewBooking(passUser: passUser),
                     ),
                   );
                 },
@@ -115,6 +93,30 @@ class Home extends StatelessWidget {
                       builder: (context) =>
                           BookingPage(passUser: passUser,selectedTimeSlot: 'timeslot',),
                     ),
+                  );
+                },
+              ),
+              ListTile(
+                title: const Text('View Booking'),
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => ViewBooking(passUser: passUser),
+                    ),
+                  );
+                },
+              ),
+              ListTile(
+                title: const Text('Logout'),
+                leading: const Icon(Icons.logout),
+                onTap: () {
+                  Navigator.pushAndRemoveUntil(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const LoginView(),
+                    ),
+                    (route) => false,
                   );
                 },
               ),

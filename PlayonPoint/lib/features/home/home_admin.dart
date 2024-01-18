@@ -33,18 +33,6 @@ class HomeAdmin extends StatelessWidget {
                 ),
               ),
               ListTile(
-                title: const Text('Login'),
-                onTap: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) =>
-                          const LoginView(),
-                    ),
-                  );
-                },
-              ),
-              ListTile(
                 title: const Text('View Booking'),
                 onTap: () {
                   Navigator.push(
@@ -75,6 +63,20 @@ class HomeAdmin extends StatelessWidget {
                     MaterialPageRoute(
                       builder: (context) => const ContactPageAdmin(),
                     ),
+                  );
+                },
+              ),
+              
+              ListTile(
+                title: const Text('Logout'),
+                leading: const Icon(Icons.logout),
+                onTap: () {
+                  Navigator.pushAndRemoveUntil(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const LoginView(),
+                    ),
+                    (route) => false,
                   );
                 },
               ),
